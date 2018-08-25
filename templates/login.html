@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    
+</head>
+<body>
+  <header>
+     <div class="container-fluid responsive-img align-center" style="background-image: url('static/images/black-pepper-bright-colors-940302.jpg')">
+        <div class="row">
+            <div class="col s12">
+                <div class="site-heading">
+                    <br>
+                    <h2 class = "text-flow black-text center-align">Welcome to this Online Cookbook</h2><br><br><br>
+                    <h2 class = "text-flow white-text center-align">View Recipes from around the World!</h2><br><br>
+                    <h3 class = "text-flow black-text center-align">You can also Add, Edit and Delete Recipes</h3><br><br><br><br><br>
+                    <h4 class = "text-flow white-text center-align">In order to view the site you must provide your username in the box below</h4><br>
+                    <h5 class = "text-flow white-text center-align">Then Hit the Button</h5>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div> 
+  </header>
+   <div class = "row"> 
+        <div class="col s9">
+            <form method="POST" class = "form-group text-center">
+                <label for="username">Enter Username:</label>
+                 <input type="text" required = "required" autocomplete="off" id="username" name="username" class ="validate" placeholder="Enter name (username) 6 or more characters" pattern = ".{5,}[^£/$%^\*~,]+" title= "Minimum of 6 characters required. (Can use (@ and hyphen-) but not other special symbols (like £,$, %))">
+        </div>
+                <div class = "col s3">
+                        <br>
+                        <button>View Recipes!</button>
+                </div>
+    
+            </form>
+    </div>
+</body>
+</html>
