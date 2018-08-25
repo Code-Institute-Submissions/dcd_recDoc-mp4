@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+.responsive-img: {
+    display: block;
+    background-size: contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    -o-background-size:contain;
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
