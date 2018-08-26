@@ -1,0 +1,25 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row center-align">
+    <h3>Recipes List</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for recipe in recipes %}
+        <li>
+            <div class="collapsible-header">
+                <div class="col s4">
+                    <i class="material-icons">edit</i>
+                    <a href="" id = "del_rec" class="waves-effect waves-light btn btn_small orange" onclick="return confirm('Are you absolutely sure you want to delete this Recipe?')">Del</a>
+                    <a href="" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                </div>
+                <div class=" recipe_header col s8">
+                    <strong>{{recipe.Recipe_name}}</strong> - {{recipe.Date_added}}
+                </div>
+            </div>
+           
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
+
+
+{% endblock %}

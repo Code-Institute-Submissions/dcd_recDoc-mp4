@@ -18,11 +18,13 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
                     <li><a href="{{url_for('get_categories')}}">View Categories</a></li>
                     
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
                     <li><a href="{{url_for('get_categories')}}">View Categories</a></li>
                   
                 </ul>
@@ -35,8 +37,27 @@
     </div>
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <!--jquery scripts to initialise the various elements of materialize-->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-   
+   <script type="text/javascript">
+    $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+            $('select').formSelect();
+        });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            format: "dddd, dd, mmmm, yyyy",
+            closeOnSelect: false // Close upon selecting a date,
+        });
+    </script>
 </body>
 
 </html>

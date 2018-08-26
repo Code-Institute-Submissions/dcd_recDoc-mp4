@@ -63,6 +63,26 @@ def insert_category():
     categories.insert_one(category_doc)
     return redirect(url_for('get_categories'))
     
+#function to locate the recipes and display
+@app.route('/get_recipes')
+def get_recipes():
+    return render_template("recipes.html", 
+    recipes=mongo.db.recipes.find())
+    
+#function to display blank form bound to the categories
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add_recipe.html',
+    categories=mongo.db.categories.find())
+    
+#function to write the data to the DB
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    recipes =  mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('get_recipes'))
+    #return redirect(url_for('index'))
+    
         
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)
