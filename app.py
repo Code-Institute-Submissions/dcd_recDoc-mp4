@@ -1,6 +1,7 @@
 import os
 from flask import Flask, redirect, render_template, request, flash, url_for
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -22,6 +23,46 @@ def login():
 @app.route('/index')                                             
 def index():
     return render_template("index.html")
+    
+#function to locate the categories and display
+@app.route('/get_categories')
+def get_categories():
+    return render_template('categories.html',
+    categories=mongo.db.categories.find()) 
+    
+#function to display the editing form
+@app.route('/edit_category/<category_id>')
+def edit_category(category_id):
+    return render_template('edit_category.html',
+    category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
+
+#function to carry out edit on the database (write to the database)
+@app.route('/update_category/<category_id>', methods=['POST'])
+def update_category(category_id):
+    mongo.db.categories.update(
+        {'_id': ObjectId(category_id)},
+        {'category_name': request.form['category_name']})
+    return redirect(url_for('get_categories'))
+    
+#function to delete a category  
+@app.route('/delete_category/<category_id>')  
+def delete_category(category_id):
+    mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    return redirect(url_for("get_categories"))
+    
+#function to display the form view to insert new data into
+@app.route('/new_category')
+def new_category():
+    return render_template('add_category.html')
+
+#function to insert a new category into the DB  
+@app.route('/insert_category', methods=['POST'])
+def insert_category():
+    categories = mongo.db.categories
+    category_doc = {'category_name': request.form['category_name']}
+    categories.insert_one(category_doc)
+    return redirect(url_for('get_categories'))
+    
         
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)
