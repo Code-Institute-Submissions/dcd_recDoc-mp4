@@ -16,3 +16,17 @@ body {
 h1, h2, h3, h4, h5 {
     font-weight: bold;
 }
+p {
+    font-size: medium;
+}
+.btn-small {
+    height: 24px;
+    width: 50px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0.5em 0.5em;
+}
+.recipe_header {
+    margin-top: 5px;
+    margin-left: 10px;
+}

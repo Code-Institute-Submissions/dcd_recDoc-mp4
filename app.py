@@ -24,19 +24,19 @@ def login():
 def index():
     return render_template("index.html")
     
-#function to locate the categories and display
+# function to locate the categories and display
 @app.route('/get_categories')
 def get_categories():
     return render_template('categories.html',
     categories=mongo.db.categories.find()) 
     
-#function to display the editing form
+# function to display the editing form
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):
     return render_template('edit_category.html',
     category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
 
-#function to carry out edit on the database (write to the database)
+# function to carry out edit on the database (write to the database)
 @app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
     mongo.db.categories.update(
@@ -44,7 +44,7 @@ def update_category(category_id):
         {'category_name': request.form['category_name']})
     return redirect(url_for('get_categories'))
     
-#function to delete a category  
+# function to delete a category  
 @app.route('/delete_category/<category_id>')  
 def delete_category(category_id):
     mongo.db.categories.remove({'_id': ObjectId(category_id)})
@@ -55,7 +55,7 @@ def delete_category(category_id):
 def new_category():
     return render_template('add_category.html')
 
-#function to insert a new category into the DB  
+# function to insert a new category into the DB  
 @app.route('/insert_category', methods=['POST'])
 def insert_category():
     categories = mongo.db.categories
@@ -63,7 +63,7 @@ def insert_category():
     categories.insert_one(category_doc)
     return redirect(url_for('get_categories'))
     
-#function to locate the recipes and display
+# function to locate the recipes and display
 @app.route('/get_recipes')
 def get_recipes():
     return render_template("recipes.html", 
@@ -75,7 +75,7 @@ def add_recipe():
     return render_template('add_recipe.html',
     categories=mongo.db.categories.find())
     
-#function to write the data to the DB
+# function to write the data to the DB
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes =  mongo.db.recipes
@@ -83,6 +83,51 @@ def insert_recipe():
     return redirect(url_for('get_recipes'))
     #return redirect(url_for('index'))
     
+# function to display the editing form
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('edit_recipe.html', recipe=the_recipe, categories=all_categories)
+    
+# function to remove a recipe from the db
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('get_recipes'))
+    
+#function to update the database once edited
+@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
+        'Recipe_name':request.form['Recipe_name'],
+        'category_name':request.form['category_name'],
+        'Total_time': request.form['Total_time'],
+        'Prep_time': request.form['Prep_time'],
+        'Cooking_time': request.form['Cooking_time'],
+        'Suitable_for_Vegetarians': request.form['Suitable_for_Vegetarians'],
+        'Suitable_for_Vegans': request.form['Suitable_for_Vegans'],
+        'Ingredients': request.form['Ingredients'],
+        'Instructions': request.form['Instructions'],
+        'Servings': request.form['Servings'],
+        'Calories_per_serving': request.form['Calories_per_serving'],
+        'Protein_per_serving': request.form['Protein_per_serving'],
+        'Carbohydrate_per_serving': request.form['Carbohydrate_per_serving'],
+        'Allergens': request.form['Allergens'],
+        'Source': request.form['Source'],
+        'Author': request.form['Author'],
+        'Country_of_origin': request.form['Country_of_origin'],
+        'Date_added': request.form['Date_added'],
+        'Added_by': request.form['Added_by'],
+        'Editing_notes':request.form['Editing_notes'],
+        #'upvotes':request.form['upvotes']
+    })
+    return redirect(url_for('get_recipes'))
+    
+
+      
         
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)

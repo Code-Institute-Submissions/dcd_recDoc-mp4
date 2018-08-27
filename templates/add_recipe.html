@@ -17,7 +17,7 @@
                 <label>Recipe Category</label>
           </div>
       </div>
-<!--code to insert recipe name-->
+<!--code for recipe name-->
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">assignment</i>
@@ -26,55 +26,44 @@
             </div>
         </div>
 <!--code for recipe total prep and cooking time-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <textarea type="textarea" name = "Total_time" id = "Total_time" class = "materialize-textarea" autocomplete="off"  placeholder="Enter as number (for example 40)"></textarea>
-              <label for="icon_prefix">Total Time (in minutes)</label>
+              <input id="Total_time" name = "Total_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <label for="icon_prefix">Total Prep and Cook Time</label>
             </div>
         </div>
+        
  <!--code for recipe prep time-->
-         <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <textarea type="textarea" name = "Prep_time" id = "Prep_time" class = "materialize-textarea" autocomplete="off"  placeholder="Enter as a number (for example 10)"></textarea>
-               
-              <label for="icon_prefix">Prep Time (in minutes)</label>
+              <input id="Prep_time" name = "Prep_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <label for="icon_prefix">Prep Time</label>
             </div>
         </div>
+        
  <!--code for recipe cooking time-->
-         <div class = "row">
+         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <textarea type="textarea" name = "Cooking_time" id = "Cooking_time" class = "materialize-textarea" autocomplete="off"  placeholder="Enter as a number(for example 20)"></textarea>
-              <label for="icon_prefix">Cooking Time (in minutes)</label>
+              <input id="Cooking_time" name = "Cooking_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <label for="icon_prefix">Cooking Time</label>
             </div>
         </div>
-<!--code for checkbox for suitability of recipe to Vegeterians and Vegans-->
-        <div class = "row">
-            <!-- Switch -->
-             <div class="switch">
-                 <i class="material-icons prefix">swap_horiz</i>
-                <label>
-                  <input id="Suitable_for_Vegetarians" name="Suitable_for_Vegetarians" type="checkbox">
-                  <span class="lever"></span>
-                    Suitable for Vegetarians (switch on if true)
-                </label>
+         
+<!--code for suitability of recipe to Vegeterians and Vegans-->
+    
+        <div class="input-field col s12">
+              <i class="material-icons prefix">restaurant</i>
+              <input id="Suitable_for_Vegetarians" name = "Suitable_for_Vegetarians" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No">
+              <label for="icon_prefix">Suitable for Vegetarians</label>
             </div>
-        </div>
-        <div class = "row">
-            <!-- Switch -->
-             <div class="switch">
-                 <i class="material-icons prefix">swap_horiz</i>
-                <label>
-                  <input id="Suitable_for_Vegans" name="Suitable_for_Vegans" type="checkbox">
-                  <span class="lever"></span>
-                    Suitable for Vegans (switch on if true)
-                </label>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">restaurant_menu</i>
+              <input id="Suitable_for_Vegans" name = "Suitable_for_Vegans" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No">
+              <label for="icon_prefix">Suitable for Vegans</label>
             </div>
-        </div>
-        <br>
-        <hr>
 <!--code to allow the user to add the recipe ingredients-->
         <div class = "row">
             <div class="input-field col s12">
@@ -92,34 +81,37 @@
             </div>
         </div>
 <!--code to allow the user to add the amount of servings obtained from the ingredients-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <textarea type="textarea" name = "Servings" id = "Servings" class = "materialize-textarea" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)"></textarea>
+              <input id="Servings" name = "Servings" type="number" class="validate" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)" pattern="[0-9}" Title = "Enter a Number">
               <label for="icon_prefix">Total Servings</label>
             </div>
         </div>
+        
 <!--code to allow the user to add the calories per serving, if known-->
-         <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <textarea type="textarea" name = "Calories_per_serving" id = "Calories_per_serving" class = "materialize-textarea" autocomplete="off"  placeholder="Value per 1 serving (for example 80)"></textarea>
-              <label for="icon_prefix">Calories per Serving (kcal)</label>
+              <input id="Calories_per_serving" name = "Calories_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 80)" pattern="[0-9}" Title = "Enter a Number">
+              <label for="icon_prefix">Calories per Serving (kCal)</label>
             </div>
         </div>
+         
 <!--code to allow the user to add the protein per serving, if known-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <textarea type="textarea" name = "Protein_per_serving" id = "Protein_per_serving" class = "materialize-textarea" placeholder="Value per 1 serving (for example 15)"></textarea>
-              <label for="icon_prefix">Protein (in grams) per Serving</label>
+              <input id="Protein_per_serving" name = "Protein_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9}" Title = "Enter a Number">
+              <label for="icon_prefix">Protein (in grams) per serving</label>
             </div>
         </div>
+        
 <!--code to allow the user to add the Carbohydrate per serving, if known-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <textarea type="textarea" name = "Carbohydrate_per_serving" id = "Carbohydrate_per_serving" class = "materialize-textarea" placeholder="Value per 1 serving (for example 40)"></textarea>
+              <input id="Carbohydrate_per_serving" name = "Carbohydrate_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9}" Title = "Enter a Number">
               <label for="icon_prefix">Carbohydrate (in grams) per Serving</label>
             </div>
         </div>
@@ -132,26 +124,27 @@
   </div>
 </div>        
 <!--code to allow the user to add the source of the recipe-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">folder</i>
-              <textarea type="textarea" name = "Source" id = "Source" class = "materialize-textarea" autocomplete="off"  placeholder= "For example may be (Website address / book name and publisher / traditional)"></textarea>
+              <input id="Source" name = "Source" type="text" class="validate" autocomplete="off"  placeholder="For example may be (Website address / book name and publisher / traditional)" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
               <label for="icon_prefix">Recipe Source</label>
             </div>
         </div>
 <!--code to allow the user to add the author's name if different to the addee-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">person</i>
-              <textarea type="textarea" name = "Author" id = "Author" class = "materialize-textarea" autocomplete="off"  placeholder= "For example may be an individual or organisation"></textarea>
+              <input id="Author" name = "Author" type="text" class="validate" autocomplete="off"  placeholder="For example may be an individual or organisation" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
               <label for="icon_prefix">Recipe Author</label>
             </div>
         </div>
+        
         <!--code to allow the user to add country of origin for the recipe-->
-        <div class = "row">
+        <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">location_city</i>
-              <textarea type="textarea" name = "Country_of_origin" id = "Country_of_origin" class = "materialize-textarea"></textarea>
+              <input id="Country_of_origin" name = "Country_of_origin" type="text" class="validate" autocomplete="off" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
               <label for="icon_prefix">Country of Origin</label>
             </div>
         </div>
@@ -165,14 +158,15 @@
             </div>
         </div>
  <!--code to allow the user to add their name-->
-     <div class = "row">
+         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">person_outline</i>
-              <textarea type="textarea" name = "Added_by" id = "Added_by" class = "materialize-textarea"></textarea>
-              <label for="icon_prefix">Recipe Added by (if different from Author)</label>
+              <input id="Added_by" name = "Added_by" type="text" class="validate" autocomplete="off"  pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
+              <label for="icon_prefix">Added By (if different from Author)</label>
             </div>
         </div>
- <!--code to allow the user to add editing notes if any more useful during actual editing-->
+     
+ <!--code to allow the user to add editing notes if any: more useful during actual editing-->
          <div class = "row">
             <div class="input-field col s12">
               <i class="material-icons prefix">edit</i>
@@ -180,11 +174,12 @@
               <label for="icon_prefix">Editing Notes (This is included to facilitate editing at a later date)</label>
             </div>
         </div>
+        
         <div class="row">
             <div class="input-field col s12">
-              <i class="material-icons prefix">sentiment_neutral</i>
-              <input id="upvotes" name = "upvotes" disabled type="number" placeholder="No of Upvotes">
-              <label for="icon_prefix">No of Upvotes</label>
+              <i class="material-icons prefix">thumb_up</i>
+              <input id="upvotes" name = "upvotes" hidden type="number" value = "0">
+              <label for="icon_prefix">Upvotes</label>
             </div>
         </div>
         <div class = "row">
