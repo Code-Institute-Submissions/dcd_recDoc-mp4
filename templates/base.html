@@ -59,6 +59,13 @@
             format: "dddd, dd, mmmm, yyyy",
             closeOnSelect: false // Close upon selecting a date,
         });
+    jQuery('#group-dropdown').on('change', function(){
+        if(jQuery(this).val() == 1){
+        window.location.href = "{{ url_for('vegetarian') }}";
+        }
+        
+       
+        });
     </script>
 </body>
 

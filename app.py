@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, render_template, request, flash, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import pymongo
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -22,7 +23,7 @@ def login():
 # route for home page    
 @app.route('/index')                                             
 def index():
-    return render_template("index.html")
+    return render_template("index.html", recipes=mongo.db.recipes.find())
     
 # function to locate the categories and display
 @app.route('/get_categories')
@@ -126,7 +127,29 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('get_recipes'))
     
-
+#update the upvotes on button click using the $inc method    
+@app.route('/update_upvote/<recipe_id>', methods=["GET", "POST"]) 
+def update_upvote(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update_one( {'_id': ObjectId(recipe_id)}, {'$inc' : { 'upvotes' : 1 }}, False,
+    { 'upvotes':request.form['upvotes']
+    })
+    return redirect(url_for('index'))    
+    
+@app.route('/view_recipe/<recipe_id>')
+def view_recipe(recipe_id):
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('view_recipe.html', recipe=the_recipe, categories=all_categories)
+    
+# function to display summary vegetarian recipe list
+@app.route('/vegetarian', methods=["GET", "POST"])
+def vegetarian():
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "yes"},{ "_id": 1, "Recipe_name": 1, "category_name": 1, "upvotes": 1, "Country_of_origin": 1, "Date_added": 1, "Allergens": 1, "Total_time": 1, "Ingredients": 1 } ).sort('Recipe_name', pymongo.ASCENDING)
+    for recipe in recipes:
+        count = recipes.count()
+        return render_template('vege.html', recipe=recipe, recipes=recipes, count=count)
+    
       
         
 if __name__ == '__main__':

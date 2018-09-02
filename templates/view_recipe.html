@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block content %}
+<!--view full recipe showing all attributes-->
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="site-heading center-align"><h3>Full Recipe</h3>
+                        <br>
+                        <ul class="collapsible">
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Recipe Name</div>
+                              <div class="collapsible-body"><span>{{recipe.Recipe_name}} .</span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Recipe Category</div>
+                              <div class="collapsible-body"><span>{{recipe.category_name}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Total Prep and Cooking Time (mins)</div>
+                              <div class="collapsible-body"><span>{{recipe.Total_time}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Total Prep Time (mins)</div>
+                              <div class="collapsible-body"><span>{{recipe.Prep_time}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Total Cooking Time (mins)</div>
+                              <div class="collapsible-body"><span>{{recipe.Cooking_time}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Suitable for Vegetarians (on means yes)</div>
+                              <div class="collapsible-body"><span>{{recipe.Suitable_for_Vegetarians}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Suitable for Vegans (on means yes)</div>
+                              <div class="collapsible-body"><span>{{recipe.Suitable_for_Vegans}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>List of Ingredients</div>
+                              <div class="collapsible-body"><span>{{recipe.Ingredients}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>List of Instructions</div>
+                              <div class="collapsible-body"><span>{{recipe.Instructions}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Total servings</div>
+                              <div class="collapsible-body"><span>{{recipe.Servings}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Calories per serving (kCal)</div>
+                              <div class="collapsible-body"><span>{{recipe.Calories_per_serving}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Protein per serving (g)</div>
+                              <div class="collapsible-body"><span>{{recipe.Protein_per_serving}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Carbohydrates per serving (g)</div>
+                              <div class="collapsible-body"><span>{{recipe.Carbohydrates_per_serving}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Allergens</div>
+                              <div class="collapsible-body"><span>{{recipe.Allergens}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Source</div>
+                              <div class="collapsible-body"><span>{{recipe.Source}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Author</div>
+                              <div class="collapsible-body"><span>{{recipe.Author}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Country of Origin</div>
+                              <div class="collapsible-body"><span>{{recipe.Country_of_origin}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Date Added</div>
+                              <div class="collapsible-body"><span>{{recipe.Date_added}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Added By</div>
+                              <div class="collapsible-body"><span>{{recipe.Added_by}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Editing Notes</div>
+                              <div class="collapsible-body"><span>{{recipe.editing_notes}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Image</div>
+                              <div class="collapsible-body"><span>{{recipe.image}} </span></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><i class="material-icons">expand_more</i>Upvotes</div>
+                              <div class="collapsible-body"><span>{{recipe.upvotes}} </span></div>
+                            </li>
+                  </div>
+                  <div class = "col s6 center-align">
+                    <form action = "{{ url_for('update_upvote',recipe_id=recipe._id) }}" method = "POST">
+                        <button input id = "upvotes" name = "upvotes" class ="waves-effect waves-light btn btn_small" type ="submit">Upvote <i class="material-icons"> thumb_up</i>
+                        </button>
+                      </form>
+                   </div>
+                  <div class = "col s6">
+                            <a href="{{url_for('index', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Back to Home Page</a>
+                    </ul>
+                  </div>
+                
+            </div>
+        </div>
+{% endblock %}

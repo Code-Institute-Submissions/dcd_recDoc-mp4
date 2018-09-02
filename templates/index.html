@@ -1,3 +1,122 @@
 {% extends 'base.html' %} {% block content %}
-    Hello world
+<section>
+    <div class="row">
+        <div class="col s12">
+            <div class="site-heading center-align"><h3>Enjoy all Recipes</h3></div>
+        </div>
+    </div>
+<div class = "row">
+    <div class = "col s12">
+        <!-- Slideshow container -->
+        <div class="slideshow-container center-align">
+       <!-- Full-width images with number and caption text --> 
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 8</div>
+              <img src="./static/images/black-pepper-bright-colors-940302.jpg" div class=" pepper-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Pepper and Garlic</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 8</div>
+              <img src="./static/images/breakfast-from-above_925x.jpg" div class="brekf-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Brekkers for All</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 8</div>
+              <img src="./static/images/cooking-food-ginger-256318.jpg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Spices to Taste</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 8</div>
+              <img src="./static/images/abstract-barbecue.jpeg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Gorge on Meat</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">5 / 8</div>
+              <img src="./static/images/crustacean.jpeg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Get Prawned</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">6 / 8</div>
+              <img src="./static/images/molluscs.jpeg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Molluscs Abound</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">7 / 8</div>
+              <img src="./static/images/pexels-photo.jpeg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Fruits of the World</div>
+            </div>
+            <div class="mySlides fade">
+              <div class="numbertext">8 / 8</div>
+              <img src="./static/images/spagh.jpeg" div class="spice-image slide responsive-img center-block" style="width:100%">
+              <div class="text">Bolognese Booty</div>
+            </div>
+<!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#8249;</a>
+          <a class="next" onclick="plusSlides(1)">&#8250;</a>
+        </div>
+    </div>
+</div>
+<h4 class ="center-align">Something for all Tastes</h4>
+</section>
+<div class = "row">
+  <div class="input-field col s6">
+      <select id="group-dropdown" name="group-dropdown" class="group-select">
+        <option value="" disabled selected>Search for Recipes</option>
+        <option value="1">Vegetarian Recipes</option>
+        <option value="2">Vegan Recipes</option>
+        <option value="3">Other Recipes</option>
+        <option value="4">All Recipes</option>
+      </select>
+      <label>Recipe Selector</label>
+    </div>
+    <div class="input-field col s6">
+      <select id="filter-dropdown" name="filder-dropdown" class="filter-select">
+        <option value="" disabled selected>Filter by Criteria</option>
+        <option value="100">Top 5 as Upvoted</option>
+        <option value="200">No Known Allergens</option>
+        <option value="300">Quick Recipes</option>
+        <option value="400">Recently Added</option>
+      </select>
+      <label>Criteria Filter</label>
+    </div>
+</div>
+
+
+<script>
+function plusSlides(n) {
+    index = index + 1;
+    showSlides(index);
+}
+var index = 1;
+showSlides(index);
+
+function currentSlide(n) {
+  showSlides(index = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {index = 1}    
+  if (n < 1) {index = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[index-1].style.display = "block";  
+}
+
+function autoSlide() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+    }
+    if (index > slides.length) {index = 1} 
+    slides[index-1].style.display = "block"; 
+    index++;
+    setTimeout(autoSlide, 5000); // Change image every 5 seconds
+}
+autoSlide();
+</script>
+
 {% endblock %}
