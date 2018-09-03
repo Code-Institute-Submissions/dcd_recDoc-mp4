@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import os
 from flask import Flask, redirect, render_template, request, flash, url_for
 from flask_pymongo import PyMongo
@@ -5,6 +6,8 @@ from bson.objectid import ObjectId
 import pymongo
 import json
 from bson import json_util
+from flask_paginate import Pagination, get_page_parameter
+from flask_paginate import Pagination, get_page_args
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -144,14 +147,147 @@ def view_recipe(recipe_id):
     all_categories =  mongo.db.categories.find()
     return render_template('view_recipe.html', recipe=the_recipe, categories=all_categories)
     
+"""GET RECIPES BY GROUP"""
+
+#function to view summary of all recipes
+# use flask paginate in conjunction with mongodb cursor.skip(offset) method for pagination
+@app.route('/allrecipes', methods=["GET", "POST"])
+def allrecipes():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find().sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('allRecipes.html', recipes=recipes_to_render, search=search, pagination=pagination)   
+    
 # function to display summary vegetarian recipe list
 @app.route('/vegetarian', methods=["GET", "POST"])
 def vegetarian():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
     recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "yes"},{ "_id": 1, "Recipe_name": 1, "category_name": 1, "upvotes": 1, "Country_of_origin": 1, "Date_added": 1, "Allergens": 1, "Total_time": 1, "Ingredients": 1 } ).sort('Recipe_name', pymongo.ASCENDING)
-    for recipe in recipes:
-        count = recipes.count()
-        return render_template('vege.html', recipe=recipe, recipes=recipes, count=count)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    # for recipe in recipes:
+    #     count = recipes.count()
+    return render_template('vege.html', recipes=recipes_to_render, search=search, pagination=pagination)
         
+# function to display summary vegan recipe list
+@app.route('/vegan', methods=["GET", "POST"])
+def vegan():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegans": { '$in': [ "Yes", "yes" ] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    # for recipe in recipes:
+    #     count = recipes.count()
+    return render_template('vegan.html', recipes=recipes_to_render, search=search, pagination=pagination)
+        
+# function to display summary other recipe list
+@app.route('/other', methods=["GET", "POST"])
+def other():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": { '$in': [ "No", "no" ] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('other.html', recipes=recipes_to_render, search=search, pagination=pagination)
+    
+# function to display summary starters recipe list
+@app.route('/starters', methods=["GET", "POST"])
+def starters():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"category_name": "Starter " }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('starters.html', recipes=recipes_to_render, search=search, pagination=pagination)
+@app.route('/mainDishes', methods=["GET", "POST"])
+
+# function to display summary Main Dish recipe list
+def mainDishes():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"category_name": "Main Course" }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('mainDishes.html', recipes=recipes_to_render, search=search, pagination=pagination)
+
+# function to display summary desserts recipe list
+@app.route('/desserts', methods=["GET", "POST"])
+def desserts():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"category_name": "Dessert" }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('desserts.html', recipes=recipes_to_render, search=search, pagination=pagination)     
+
+# function to display summary side dish recipe list
+@app.route('/sideDishes', methods=["GET", "POST"])
+def sideDishes():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"category_name": "Side Course" }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('sideDishes.html', recipes=recipes_to_render, search=search, pagination=pagination) 
+# function to display summary breads and cakes recipe list   
+@app.route('/breadsCakes', methods=["GET", "POST"])
+def breadsCakes():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"category_name": "Breads and Cakes" }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('breadsCakes.html', recipes=recipes_to_render, search=search, pagination=pagination) 
+    
 #retrieve attributes from the db to be used in chart construction
 @app.route("/recipe_book/recipes")
 def recipe_book():

@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+  <div class="container">
+        <div class="row center-align">
+            <div class="col s12">
+                <div class="site-heading align-center"><h4>Summary List of all Recipes</h4> 
+                </div>
+                    <br>
+                    <div class ="row">
+                  <div class = "col s6 "> {{ pagination.info }}</div>
+                  <div class ="col s6"><a href="{{url_for('draw_chart')}}" class="waves-effect waves-light btn btn_small green lighten-3">View Dashboard</a></div>
+                  </div>
+                  
+                <form action="{{ url_for('allrecipes') }}" method="POST" class="col s12">
+                        {{ pagination.links }}
+                    {% for recipe in recipes %}
+                
+                    <!--loop through the attributes {object.key}-->
+                            <ul class="collapsible">
+                        <li>
+                          <div class="recipe-header align-center">Recipe Name: 
+                          <span class = "bold">{{recipe.Recipe_name}} </strong></span></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Recipe Category</div>
+                          <div class="collapsible-body"><span class = "bold">{{recipe.category_name}} </span></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Upvotes</div>
+                          <div class="collapsible-body"><span class = "bold">{{recipe.upvotes}} </span></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Country of Origin</div>
+                          <div class="collapsible-body"><span>{{recipe.Country_of_origin}} </span></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Date Added</div>
+                          <div class="collapsible-body"><span>{{recipe.Date_added}} </span></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Allergens</div>
+                          <div class="collapsible-body"><span>{{recipe.Allergens}} </span></div>
+                        </li>
+                         <li>
+                          <div class="collapsible-header"><i class="material-icons">expand_more</i>Total Prep and Cooking Time (minutes)</div>
+                          <div class="collapsible-body"><span>{{recipe.Total_time}} </span></div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">expand_more</i>Ingredients</div>
+                            <div class="collapsible-body"><span>{{recipe.Ingredients}}</span></div>
+                        </li>
+                        <div class = "row">
+                            <div class = "col s6">
+                                 <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Full Recipe</a>
+                            </div>
+                            <div class = "col s6">
+                                <a href="{{url_for('index')}}" class="waves-effect waves-light btn btn_small red lighten-3">Home Page</a>
+                            </div>
+                                
+                            </div>   
+                      </ul>
+                       {% endfor %}
+                       {{ pagination.links }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

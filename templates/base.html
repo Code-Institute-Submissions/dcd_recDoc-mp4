@@ -65,7 +65,30 @@
         if(jQuery(this).val() == 1){
         window.location.href = "{{ url_for('vegetarian') }}";
         }
-        
+       if(jQuery(this).val() == 2){
+        window.location.href = "{{ url_for('vegan') }}";
+        }
+        if(jQuery(this).val() == 3){
+        window.location.href = "{{ url_for('other') }}";
+        }
+       if(jQuery(this).val() == 4){
+        window.location.href = "{{ url_for('allrecipes') }}";
+        }
+        if(jQuery(this).val() == 5){
+        window.location.href = "{{ url_for('starters') }}";
+        }
+       if(jQuery(this).val() == 6){
+        window.location.href = "{{ url_for('mainDishes') }}";
+        }
+        if(jQuery(this).val() == 7){
+        window.location.href = "{{ url_for('desserts') }}";
+        }
+       if(jQuery(this).val() == 8){
+        window.location.href = "{{ url_for('sideDishes') }}";
+        }
+        if(jQuery(this).val() == 9){
+        window.location.href = "{{ url_for('breadsCakes') }}";
+        }
        
         });
     </script>

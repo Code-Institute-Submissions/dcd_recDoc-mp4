@@ -60,7 +60,7 @@ img {vertical-align: middle;}
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.previouspage, .nextpage {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -75,15 +75,15 @@ img {vertical-align: middle;}
     border-radius: 100%;
 }
 /*positoion the chevrons at both edges*/
-.next {
+.nextpage {
     right: 0px;
 }
-.prev {
+.previouspage {
     left: 0px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+.previouspage:hover, .nextpage:hover {
   background-color: rgba(0,0,0,0.8);
 }
 div.numbertext {
@@ -188,6 +188,21 @@ a:hover {
     font-weight: 500;
     display: inline-block;
     margin-left: 0;
+}
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
 }
 #Country_of_origin {
     text-transform: lowercase;
