@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css" type="text/css" />
+     <!-- Bootstrap core CSS -->
+    <link href="./static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/css/dc.min.css" type="text/css" />
+    <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
+    <!-- Custom styles for this template -->
+    <link href="./static/css/round-about.css" rel="stylesheet">
+   
+   <!--========== dc-crossfilter javascript files==========-->                                                                      
+    <script type="text/javascript" src="./static/js/d3.min.js"></script>
+    <script type="text/javascript" src="./static/js/crossfilter.min.js"></script>
+    <script type="text/javascript" src="./static/js/dc.min.js"></script>
+    <script type="text/javascript" src="./static/js/queue.min.js"></script>
+    <script type="text/javascript" src="./static/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./static/js/graph.js"></script>
+
+</head>
+<body>
+   
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <div id ="header-nav">
+        <a class="navbar-brand" id = "navbar-brand" href="{{url_for('index')}}">Online Cookbook</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+           <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+              <a class="nav-link" href="" id="brand-logo-chart">
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('add_recipe')}}">Add Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('get_recipes')}}">Edit Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('get_categories')}}">View Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('draw_chart')}}">View Dashboard</a>
+            </li>
+           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+    <br>
+   <!--========== Chart Section 1 number boxes ==========-->
+   <div class = "container-fluid">
+   <section class="section">
+       <div class="row">
+              <div class="col-xs-4 text-center"><h3 class ="text-primary">Total Recipes</h3></div>
+              <div class="col-xs-4 text-center"><h3 class ="text-warning">For Vegetarians</h3></div>
+              <div class="col-xs-4 text-center"><h3 class ="text-success">For Vegans</h3></div>
+        </div>
+        <div class="row">
+              <div class="col-xs-4 text-center number_box text-primary" id="all-recipes"></div>
+              <div class="col-xs-4 text-center number_box text-warning" id="veg-recipes" ></div>
+              <div class="col-xs-4 text-center number_box text-success" id="vegan-recipes" ></div>
+        </div><br>
+        <div class="row">
+        <div class="col-xs-12 text-center"><p>The numbers above show Total Recipes on this site and numbers suitable to Vegetarians and Vegans respectively</p><br>
+        </div>
+        </div>
+</div>    
+    </section>
+    <hr>
+    <!--========== Chart Section 2 Charts==========-->
+    <section class="section container-fluid">
+        <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center"><h3>Fig.1 Recipe Categories</h3></div>
+              <div class="col-xs-12 col-sm-6 text-center"><h3>Fig. 2 Number of Allergens</h3></div>
+        </div>
+        <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center center-block" id="pie-cat"></div>
+              <div class="col-xs-12 col-sm-6 text-center center-block" id="allergens" ></div>
+        </div>
+        <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center "><p>Fig 1 above shows the Number of Recipes by Course Category</p></div>
+              <div class="col-xs-12 col-sm-6 text-center"><p>Fig.2 above shows the Allergens by Number and Type</p></div>
+        </div>
+    </section>
+    <hr>
+     <!--========== Chart Section 3 Charts==========-->
+    <section class="section">
+        
+        <div class = "row">
+             <div class="col-xs-12 col-sm-12 text-center"> <h3>Fig. 3 Recipe Country of Origin</h3></div>   
+        </div>  
+         <div class="row">
+              <div class="col-xs-12 col-sm-12 text-center center-block" id="origin"></div>
+        </div>
+        <div class="row">
+              <div class="col-xs-12 col-sm-12 text-center "><p>Fig 3 above shows the Total Number of Recipes per Country</p></div>
+        </div>
+      </section>
+      <hr>
+       <!--========== Chart Section 4 Charts==========-->
+      <section class="section">
+      <div class = "row">
+             <div class="col-xs-12 col-sm-6 text-center"> <h3>Fig. 4 Recipe Types within each Course</h3></div>   
+             <div class="col-xs-12 col-sm-6 text-center"> <h3>Fig. 5 Recipe Types by Allergen</h3></div>   
+        </div>
+      <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center center-block" id="type"></div>
+              <div class="col-xs-12 col-sm-6 text-center center-block" id="typebyAllergen" ></div>
+        </div>
+        <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center "><p>Fig 4 above compares the numbers of recipes by type (ie: vegetarian, vegan and meat eater) within each course.</p></div>
+              <div class="col-xs-12 col-sm-6 text-center "><p>Fig 5 above compares the numbers of recipes by type within each Allergen Type</p></div>
+        </div>
+         </section>
+         <hr>
+    <!-- Bootstrap core JavaScript -->
+    <script src="./static/vendor/jquery/jquery.min.js"></script>
+    <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

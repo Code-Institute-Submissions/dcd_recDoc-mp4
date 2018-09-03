@@ -3,6 +3,8 @@ from flask import Flask, redirect, render_template, request, flash, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import pymongo
+import json
+from bson import json_util
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -149,7 +151,21 @@ def vegetarian():
     for recipe in recipes:
         count = recipes.count()
         return render_template('vege.html', recipe=recipe, recipes=recipes, count=count)
+        
+#retrieve attributes from the db to be used in chart construction
+@app.route("/recipe_book/recipes")
+def recipe_book():
+    recipes=mongo.db.recipes.find({}, { "category_name": 1, "Total_time": 1, "Date_added": 1, "Allergens": 1, "Suitable_for_Vegans": 1, "Suitable_for_Vegetarians": 1, "Recipe_name": 1, "Country_of_origin": 1, "_id": 0 })
+#output as a string list  for use in dc js charting
+    json_recipes = []
+    for attribute in recipes:
+        json_recipes.append(attribute)
+    json_recipes = json.dumps(json_recipes, default=json_util.default)
+    return json_recipes
     
+@app.route("/draw_chart")
+def draw_chart():
+    return render_template("chart.html")    
       
         
 if __name__ == '__main__':
