@@ -89,8 +89,22 @@
         if(jQuery(this).val() == 9){
         window.location.href = "{{ url_for('breadsCakes') }}";
         }
-       
         });
+    jQuery('#filter-dropdown').on('change', function(){
+        if(jQuery(this).val() == 100){
+        window.location.href = "{{ url_for('topfive') }}";
+        }
+         if(jQuery(this).val() == 200){
+        window.location.href = "{{ url_for('noAllergens') }}";
+        }
+        if(jQuery(this).val() == 300){
+        window.location.href = "{{ url_for('quickRec') }}";
+        }
+        if(jQuery(this).val() == 400){
+        window.location.href = "{{ url_for('recentlyAdded') }}";
+        }
+        
+    });
     </script>
 </body>
 

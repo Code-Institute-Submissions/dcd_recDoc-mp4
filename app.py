@@ -287,6 +287,58 @@ def breadsCakes():
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('breadsCakes.html', recipes=recipes_to_render, search=search, pagination=pagination) 
+""" FILTER BY CRITERIA """
+# get the top 5 by upvote
+@app.route('/topfive', methods=["GET", "POST"])
+def topfive():
+    recipes=mongo.db.recipes.find({"upvotes": { '$gt': 0 } } ).sort('upvotes', pymongo.DESCENDING).limit(5)
+    return render_template('topfive.html', recipes=recipes)
+    
+# get allergen free recipes    
+@app.route('/noAllergens', methods=["GET", "POST"])
+def noAllergens():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"Allergens": { '$in': ["None Known", "none known"] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('noAllergens.html',  recipes=recipes_to_render, search=search, pagination=pagination)
+
+# search for quick recipes
+@app.route('/quickRec', methods=["GET", "POST"])
+def quickRec():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"Total_time": { '$lte': 30 } } ).sort('Total_time', pymongo.ASCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('quickRec.html', recipes=recipes_to_render, search=search, pagination=pagination)     
+
+# search for recent recipes
+@app.route('/recentlyAdded', methods=["GET", "POST"])
+def recentlyAdded():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # get_page_arg defaults to page 1, per_page of 10
+    page, per_page, offset = get_page_args()
+    recipes=mongo.db.recipes.find({"Date_added": {"$gte": 'Tuesday, 21, August, 2018'}}).sort('Date_added', pymongo.DESCENDING)
+    recipes_to_render = recipes.limit(per_page).skip(offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    return render_template('recentlyAdded.html', recipes=recipes_to_render, search=search, pagination=pagination)
+
     
 #retrieve attributes from the db to be used in chart construction
 @app.route("/recipe_book/recipes")

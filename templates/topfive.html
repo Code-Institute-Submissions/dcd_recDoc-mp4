@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row">
+            <div class="col s12 center-align">
+                <div class="site-heading center-align"><h4>Top 5 by Upvote</h4></div>
+                            <br>
+                <form action="{{ url_for('topfive') }}" method="POST" class="col s12">
+                     {% for recipe in recipes %}
+                    <ul  class="collapsible">
+                            <li>
+                                <div class="recipe-header">Recipe Name: 
+                                    <span class="bold">{{recipe.Recipe_name}}</span></div>
+                            </li>
+                            <li>
+                                <div class="header align-center">Recipe Category:
+                                    <span class="bold">{{recipe.category_name}} </span></div>
+                            </li>
+                            <li>
+                                <div class="header align-center">Upvotes: 
+                                    <span class="bold">{{recipe.upvotes}} </span></div>
+                            </li>
+                            <li>
+                                <div class="header align-center">Country of Origin: 
+                                    <span>{{recipe.Country_of_origin}} </span></div>
+                            </li>
+                        <div class = "row">
+                            <div class = "col s6">
+                             <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Full Recipe</a>
+                              </div>
+                                    <div class = "col s6">
+                                     <a href="{{url_for('index')}}" class="waves-effect waves-light btn btn_small red lighten-3">Home Page</a>
+                                 </div>
+                            </div>
+                     </ul> 
+                    <hr>
+                     {% endfor %} 
+                </form>
+            
+         </div>
+     </div>
+ </div>
+ 
+{% endblock %}
