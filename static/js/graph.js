@@ -125,7 +125,7 @@ function type_by_category(ndx) {
                  } 
                 };
             }
-        var    totVegetarian = cat_dim.group().reduceSum(totVeg('yes'));
+        var    totVegetarian = cat_dim.group().reduceSum(totVeg('Yes'));
             function totVegan(Suitable_for_Vegans) {
                 return function (d) {
                     countv = 0
@@ -137,7 +137,7 @@ function type_by_category(ndx) {
                  } 
                 };
             }
-        var    totalVegan = cat_dim.group().reduceSum(totVegan('yes'));
+        var    totalVegan = cat_dim.group().reduceSum(totVegan('Yes'));
              function totMeat(Suitable_for_Vegetarians) {
                 return function (d) {
                     countT = 0
@@ -149,7 +149,7 @@ function type_by_category(ndx) {
                  } 
                 };
             }
-        var    totalMeat = cat_dim.group().reduceSum(totMeat('no'));
+        var    totalMeat = cat_dim.group().reduceSum(totMeat('No'));
             
     //var group = dim.group();
     dc.barChart("#type")
@@ -204,9 +204,9 @@ function type_by_allergen(ndx) {
                  } 
                 };
             }
-    var  totVegetarian = allergen_dim.group().reduceSum(totVeg('yes'));
-    var totalVegan = allergen_dim.group().reduceSum(totVegan('yes'));
-    var totalMeat = allergen_dim.group().reduceSum(totMeat('no'));
+    var  totVegetarian = allergen_dim.group().reduceSum(totVeg('Yes'));
+    var totalVegan = allergen_dim.group().reduceSum(totVegan('Yes'));
+    var totalMeat = allergen_dim.group().reduceSum(totMeat('No'));
      
     
  //var group = dim.group();
