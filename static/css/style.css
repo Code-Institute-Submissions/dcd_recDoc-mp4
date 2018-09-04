@@ -204,14 +204,18 @@ a:hover {
     padding: .1em .25em;
     font-size: 150%;
 }
-#Country_of_origin {
-    text-transform: lowercase;
+/* some css styles to form fields */
+#Recipe_name, #Country_of_origin, #Allergens, #Source, #Author, #Added_by, #Editing_notes {
+    text-transform: capitalize;
+    
 }
 /*davisford github.com/dc-js/dc.js/issues/731*/
 #typebyAllergen .x.axis text {
     text-anchor: end !important;
     transform: rotate(-30deg);
 }
+
+
 
 
 /* On smaller screens, decrease text size */

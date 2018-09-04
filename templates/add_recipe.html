@@ -21,7 +21,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">assignment</i>
-              <input id="Recipe_name" name = "Recipe_name" type="text" class="validate" autocomplete="off"  placeholder="For example Beef stew (numbers can also be used, but no special characters (such as £, $, ^)" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
+              <input id="Recipe_name" name = "Recipe_name" type="text" class="validate" required autocomplete="off"  placeholder="For example Beef stew (numbers can also be used, but no special characters (such as £, $, ^)" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
               <label for="icon_prefix">Recipe Name</label>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Total_time" name = "Total_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Total_time" name = "Total_time" type="number" class="validate" required autocomplete="off"  placeholder="Enter as a number (for example 40)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Total Prep and Cook Time (in minutes)</label>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Prep_time" name = "Prep_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Prep_time" name = "Prep_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Prep Time (in minutes)</label>
             </div>
         </div>
@@ -47,7 +47,7 @@
          <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Cooking_time" name = "Cooking_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 40)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Cooking_time" name = "Cooking_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Cooking Time (in minutes)</label>
             </div>
         </div>
@@ -56,12 +56,12 @@
     
         <div class="input-field col s12">
               <i class="material-icons prefix">restaurant</i>
-              <input id="Suitable_for_Vegetarians" name = "Suitable_for_Vegetarians" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No">
+              <input id="Suitable_for_Vegetarians" name = "Suitable_for_Vegetarians" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" required pattern="[Y,e,s,N,o]{1,3}" Title= "Yes or No">
               <label for="icon_prefix">Suitable for Vegetarians</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">restaurant_menu</i>
-              <input id="Suitable_for_Vegans" name = "Suitable_for_Vegans" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No">
+              <input id="Suitable_for_Vegans" name = "Suitable_for_Vegans" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" required pattern="[Y,e,s,N,o]{1,3}" Title= "Yes or No">
               <label for="icon_prefix">Suitable for Vegans</label>
             </div>
 <!--code to allow the user to add the recipe ingredients-->
@@ -84,7 +84,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Servings" name = "Servings" type="number" class="validate" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Servings" name = "Servings" type="number" class="validate" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Total Servings</label>
             </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Calories_per_serving" name = "Calories_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 80)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Calories_per_serving" name = "Calories_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 80)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Calories per Serving (kCal)</label>
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Protein_per_serving" name = "Protein_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Protein_per_serving" name = "Protein_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Protein (in grams) per serving</label>
             </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Carbohydrate_per_serving" name = "Carbohydrate_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9}" Title = "Enter a Number">
+              <input id="Carbohydrate_per_serving" name = "Carbohydrate_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Carbohydrate (in grams) per Serving</label>
             </div>
         </div>
@@ -119,7 +119,7 @@
  <div class ="row">
   <div class="input-field col s12">
       <i class="material-icons prefix">comment</i>
-          <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)"></textarea>
+          <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  required placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)"></textarea>
           <label for="icon_prefix">Allergens (Write None Known if there are none)</label>
   </div>
 </div>        
@@ -144,7 +144,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">location_city</i>
-              <input id="Country_of_origin" name = "Country_of_origin" type="text" class="validate" autocomplete="off" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
+              <input id="Country_of_origin" name = "Country_of_origin" type="text" class="validate" required autocomplete="off" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}">
               <label for="icon_prefix">Country of Origin</label>
             </div>
         </div>
@@ -153,7 +153,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">today</i>
-                <input id="Date_added" name="Date_added" type="text" class="datepicker">
+                <input id="Date_added" name="Date_added" type="text" class="datepicker" required>
                 <label for="icon_prefix">Date Recipe Added</label>
             </div>
         </div>
@@ -174,11 +174,10 @@
               <label for="icon_prefix">Editing Notes (This is included to facilitate editing at a later date)</label>
             </div>
         </div>
-        
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">thumb_up</i>
-              <input id="upvotes" name = "upvotes" hidden type="number" value = "0">
+              <input id="upvotes" name = "upvotes" readonly type="number" value = "0" step = "1">
               <label for="icon_prefix">Upvotes</label>
             </div>
         </div>
@@ -191,6 +190,7 @@
             </a>
             </button>
     </form>
+    
  </div>
  
 {% endblock %}

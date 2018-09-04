@@ -23,7 +23,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">assignment</i>
-              <input id="Recipe_name" name = "Recipe_name" type="text" class="validate" autocomplete="off"  placeholder="For example Beef stew (numbers can also be used, but no special characters (such as £, $, ^)" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}" value="{{recipe.Recipe_name}}">
+              <input id="Recipe_name" name = "Recipe_name" type="text" class="validate" required autocomplete="off"  placeholder="For example Beef stew (numbers can also be used, but no special characters (such as £, $, ^)" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}" value="{{recipe.Recipe_name}}">
               <label for="icon_prefix">Recipe Name</label>
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Total_time" name = "Total_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number" value="{{recipe.Total_time}}">>
+              <input id="Total_time" name = "Total_time" type="number" class="validate" required autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number" value="{{recipe.Total_time}}">>
               <label for="icon_prefix">Total Prep and Cook Time (in minutes)</label>
             </div>
         </div>
@@ -57,12 +57,12 @@
 <!--code for suitability of recipe to Vegeterians and Vegans-->
         <div class="input-field col s12">
               <i class="material-icons prefix">restaurant</i>
-              <input id="Suitable_for_Vegetarians" name = "Suitable_for_Vegetarians" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No" value="{{recipe.Suitable_for_Vegetarians}}">
+              <input id="Suitable_for_Vegetarians" name = "Suitable_for_Vegetarians" type="text" class="validate" autocomplete="off"  required placeholder="Yes or No" pattern="[Y,e,s,N,o]{1,3}" Title= "Yes or No" value="{{recipe.Suitable_for_Vegetarians}}">
               <label for="icon_prefix">Suitable for Vegetarians</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">restaurant_menu</i>
-              <input id="Suitable_for_Vegans" name = "Suitable_for_Vegans" type="text" class="validate" autocomplete="off"  placeholder="Yes or No" pattern="[a-zA-Z]{1,3}" Title= "Yes or No" value="{{recipe.Suitable_for_Vegans}}">
+              <input id="Suitable_for_Vegans" name = "Suitable_for_Vegans" type="text" class="validate" autocomplete="off"  required placeholder="Yes or No" pattern="[Y,e,s,N,o]{1,3}" Title= "Yes or No" value="{{recipe.Suitable_for_Vegans}}">
               <label for="icon_prefix">Suitable for Vegans</label>
             </div>
         
@@ -122,7 +122,7 @@
    <div class ="row">
   <div class="input-field col s12">
       <i class="material-icons prefix">comment</i>
-          <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)">{{recipe.Allergens}}</textarea>
+          <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  required placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)">{{recipe.Allergens}}</textarea>
           <label for="icon_prefix">Allergens (Write None Known if there are none)</label>
   </div>
 </div>             
@@ -148,7 +148,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">location_city</i>
-              <input id="Country_of_origin" name = "Country_of_origin" type="text" class="validate" autocomplete="off" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}" value="{{recipe.Country_of_origin}}">
+              <input id="Country_of_origin" name = "Country_of_origin" type="text" class="validate" required autocomplete="off" pattern="[a-zA-Z0-9 -*&()[]{}@?]{1,}" value="{{recipe.Country_of_origin}}">
               <label for="icon_prefix">Country of Origin</label>
             </div>
         </div>
@@ -171,13 +171,20 @@
         </div>
      
  <!--code to allow the user to add editing notes during editing-->
- <div class = "row">
+         <div class = "row">
             <div class="input-field col s12">
               <i class="material-icons prefix">edit</i>
               <textarea type="textarea" name = "Editing_notes" id = "Editing_notes" class = "materialize-textarea">{{recipe.Editing_notes}}</textarea>
               <label for="icon_prefix">Editing Notes (This is included to facilitate editing at a later date)</label>
             </div>
         </div> 
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">thumb_up</i>
+              <input id="upvotes" name = "upvotes"  class = "validate" type="number" readonly value = "{{recipe.upvotes}}">
+              <label for="icon_prefix">Upvotes</label>
+            </div>
+        </div>
         <!--submit button-->
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="action">Edit Recipe

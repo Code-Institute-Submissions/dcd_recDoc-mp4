@@ -128,7 +128,7 @@ def update_recipe(recipe_id):
         'Date_added': request.form['Date_added'],
         'Added_by': request.form['Added_by'],
         'Editing_notes':request.form['Editing_notes'],
-        #'upvotes':request.form['upvotes']
+        'upvotes':request.form['upvotes']
     })
     return redirect(url_for('get_recipes'))
     
@@ -175,7 +175,7 @@ def vegetarian():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "yes"},{ "_id": 1, "Recipe_name": 1, "category_name": 1, "upvotes": 1, "Country_of_origin": 1, "Date_added": 1, "Allergens": 1, "Total_time": 1, "Ingredients": 1 } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "Yes"},{ "_id": 1, "Recipe_name": 1, "category_name": 1, "upvotes": 1, "Country_of_origin": 1, "Date_added": 1, "Allergens": 1, "Total_time": 1, "Ingredients": 1 } ).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     # for recipe in recipes:
@@ -192,7 +192,7 @@ def vegan():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"Suitable_for_Vegans": { '$in': [ "Yes", "yes" ] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegans": "Yes" } ).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     # for recipe in recipes:
@@ -209,7 +209,7 @@ def other():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": { '$in': [ "No", "no" ] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "No" }).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('other.html', recipes=recipes_to_render, search=search, pagination=pagination)
@@ -304,7 +304,7 @@ def noAllergens():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"Allergens": { '$in': ["None Known", "none known"] } } ).sort('Recipe_name', pymongo.ASCENDING)
+    recipes=mongo.db.recipes.find({"Allergens": "None Known" } ).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('noAllergens.html',  recipes=recipes_to_render, search=search, pagination=pagination)
