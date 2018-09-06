@@ -214,7 +214,27 @@ a:hover {
     text-anchor: end !important;
     transform: rotate(-30deg);
 }
-
+.paragraph-header {
+    font-size: 20px;
+    color: #26a69a;
+}
+.table-paragraph {
+    font-size: 18px;
+    color: #26a69a;
+}
+th {
+    font-size: 20px; 
+}
+tr {
+    font-size: 15px; 
+}
+/*style the table pagination elements*/
+#recTable_length, #recTable_filter, #recTable_info, #recTable_previous, #recTable_next {
+    font-size: 15px; 
+}
+button, select {
+    font-size: 15px; 
+}
 
 
 

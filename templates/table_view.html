@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css" type="text/css" />
+     <!-- Bootstrap core CSS -->
+    <link href="./static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="./static/css/datatables.css" type="text/css" />
+     <!-- Custom styles for this template -->
+    <link href="./static/css/round-about.css" rel="stylesheet">
+<head>
+	
+ <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <div id ="header-nav">
+        <a class="navbar-brand" id = "navbar-brand" href="{{url_for('index')}}">Online Cookbook</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+           <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+              <a class="nav-link" href="" id="brand-logo-chart">
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('add_recipe')}}">Add Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('get_recipes')}}">Edit Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('get_categories')}}">View Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('draw_chart')}}">View Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id = "nav-link" href="{{url_for('table_view')}}">View Data Table</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+ 
+   
+   <!--========== javascript file==========--> 
+    <script type="text/javascript" src="./static/js/jquery-3.3.1.js"></script>
+
+</head>
+<body>
+	<!--pagination example this also has a search funtion-->
+	<div class = "container-fluid">
+    	<div class = "row viewTable-header text-center">
+    		<div class = "col sm-12">
+    			<p class = "paragraph-header">This page shows Summary Data for all Recipes. Click on a heading to sort Ascending / Desending</p>
+    			<p class = "table-paragraph">Use search to find a recipe, country or allergen. Press backspace in search to clear and return to summary data</p>
+    		</div>
+    	</div>
+            <div class="row table-responsive">
+             	<div class="col-xs-12 col sm-12">
+                       <table id = "recTable" class="data-table table-striped table-hover table-condensed">
+                            <thead class = "thead-light text-center">
+                                <tr>
+                                    <th class = "text-center">Category</th>
+                                    <th class = "text-center">Name</th>
+                                    <th class = "text-center">View Recipe</th>
+                                    <th class = "text-center">Origin</th>
+                                    <th class = "text-center">Allergens</th>
+                                    <th class = "text-center">Date Added</th>
+                                </tr>
+                            </thead>
+                                <tbody class ="text-center">
+                                    {% for recipe in recipes %}
+                                    <tr>
+                                        <td> {{recipe.category_name}} </td>
+                                        <td> {{recipe.Recipe_name}} </td>
+                                         <td><a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" type="button" class="btn btn-outline-info">View Here</a></td>
+                                        <td> {{recipe.Country_of_origin}} </td>
+                                        <td> {{recipe.Allergens}} </td>
+                                        <td> {{recipe.Date_added}} </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody> 
+                        </table>
+                </div>
+          </div>
+      </div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	
+		<!-- Bootstrap core JavaScript -->
+        <script src="./static/vendor/jquery/jquery.min.js"></script>
+        <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        	<script type="text/javascript" src= "./static/js/datatables.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+    		$('#recTable').dataTable();
+		});
+    	</script>	
+
+
+</body>
+</html>

@@ -8,6 +8,7 @@ import json
 from bson import json_util
 from flask_paginate import Pagination, get_page_parameter
 from flask_paginate import Pagination, get_page_args
+from mongo_datatables import DataTables
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -127,7 +128,6 @@ def update_recipe(recipe_id):
     {"upvotes": 4},
     {"$set": {"upvotes": 4},
      "$currentDate": {"lastModified": True}})
-    return redirect(url_for('get_recipes'))
     mongo.db.recipes.update_many(
     {"upvotes": 5},
     {"$set": {"upvotes": 5},
@@ -396,11 +396,17 @@ def recipe_book():
         json_recipes.append(attribute)
     json_recipes = json.dumps(json_recipes, default=json_util.default)
     return json_recipes
-    
+
+#show the chart   
 @app.route("/draw_chart")
 def draw_chart():
     return render_template("chart.html")    
-      
+
+# show the table
+@app.route('/table-view')
+def table_view():
+    return render_template("table_view.html",
+    recipes=mongo.db.recipes.find())     
         
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'), port=int(os.environ.get('PORT', 0)), debug=True)
