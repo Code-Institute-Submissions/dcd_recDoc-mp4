@@ -106,6 +106,52 @@ def delete_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
+    # temporary methods to handle strings being inputted on edit
+    mongo.db.recipes.update_many(
+    {"upvotes": "0"},
+    {"$set": {"upvotes": 0},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 1},
+    {"$set": {"upvotes": 1},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 2},
+    {"$set": {"upvotes": 2},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 3},
+    {"$set": {"upvotes": 3},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 4},
+    {"$set": {"upvotes": 4},
+     "$currentDate": {"lastModified": True}})
+    return redirect(url_for('get_recipes'))
+    mongo.db.recipes.update_many(
+    {"upvotes": 5},
+    {"$set": {"upvotes": 5},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 6},
+    {"$set": {"upvotes": 6},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 7},
+    {"$set": {"upvotes": 7},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 8},
+    {"$set": {"upvotes": 8},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 9},
+    {"$set": {"upvotes": 9},
+     "$currentDate": {"lastModified": True}})
+    mongo.db.recipes.update_many(
+    {"upvotes": 10},
+    {"$set": {"upvotes": 10},
+     "$currentDate": {"lastModified": True}})
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         'Recipe_name':request.form['Recipe_name'],
@@ -224,13 +270,13 @@ def starters():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"category_name": "Starter " }).sort('Recipe_name', pymongo.ASCENDING)
+    recipes=mongo.db.recipes.find({"category_name": "Starter" }).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('starters.html', recipes=recipes_to_render, search=search, pagination=pagination)
-@app.route('/mainDishes', methods=["GET", "POST"])
 
 # function to display summary Main Dish recipe list
+@app.route('/mainDishes', methods=["GET", "POST"])
 def mainDishes():
     search = False
     q = request.args.get('q')
