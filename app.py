@@ -74,7 +74,7 @@ def insert_category():
 @app.route('/get_recipes')
 def get_recipes():
     return render_template("recipes.html", 
-    recipes=mongo.db.recipes.find())
+    recipes=mongo.db.recipes.find().sort('Recipe_name', pymongo.ASCENDING ))
     
 #function to display blank form bound to the categories
 @app.route('/add_recipe')
@@ -107,51 +107,6 @@ def delete_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
-    # temporary methods to handle strings being inputted on edit
-    mongo.db.recipes.update_many(
-    {"upvotes": "0"},
-    {"$set": {"upvotes": 0},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 1},
-    {"$set": {"upvotes": 1},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 2},
-    {"$set": {"upvotes": 2},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 3},
-    {"$set": {"upvotes": 3},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 4},
-    {"$set": {"upvotes": 4},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 5},
-    {"$set": {"upvotes": 5},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 6},
-    {"$set": {"upvotes": 6},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 7},
-    {"$set": {"upvotes": 7},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 8},
-    {"$set": {"upvotes": 8},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 9},
-    {"$set": {"upvotes": 9},
-     "$currentDate": {"lastModified": True}})
-    mongo.db.recipes.update_many(
-    {"upvotes": 10},
-    {"$set": {"upvotes": 10},
-     "$currentDate": {"lastModified": True}})
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         'Recipe_name':request.form['Recipe_name'],
@@ -182,9 +137,15 @@ def update_recipe(recipe_id):
 @app.route('/update_upvote/<recipe_id>', methods=["GET", "POST"]) 
 def update_upvote(recipe_id):
     recipes = mongo.db.recipes
+    mongo.db.recipes.update_many(
+    {"upvotes": "0"},
+    {"$set": {"upvotes": 0},
+    "$currentDate": {"lastModified": True}})
     recipes.update_one( {'_id': ObjectId(recipe_id)}, {'$inc' : { 'upvotes' : 1 }}, False,
     { 'upvotes':request.form['upvotes']
     })
+    if request.method == "POST":
+        flash("You have successfully upvoted a recipe! Thank you", "alert alert-success")
     return redirect(url_for('index'))    
     
 @app.route('/view_recipe/<recipe_id>')

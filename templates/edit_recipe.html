@@ -181,7 +181,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">thumb_up</i>
-              <input id="upvotes" name = "upvotes"  class = "validate" type="number" readonly value = "{{recipe.upvotes}}">
+              <input id="upvotes" name = "upvotes" input type = "number" readonly value = "{{recipe.upvotes|int}}">
               <label for="icon_prefix">Upvotes</label>
             </div>
         </div>

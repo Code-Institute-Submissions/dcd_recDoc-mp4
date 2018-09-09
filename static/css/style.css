@@ -235,7 +235,14 @@ tr {
 button, select {
     font-size: 15px; 
 }
-
+.upvoteFlash  {
+    color: white;
+    font-size: large;
+    text-transform: uppercase;
+    background-color: teal;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
 
 
 /* On smaller screens, decrease text size */
