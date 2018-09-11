@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="./static/css/datatables.css" type="text/css" />
      <!-- Custom styles for this template -->
     <link href="./static/css/round-about.css" rel="stylesheet">
-<head>
-	
+</head>
+<body>	
  <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
         <div id ="header-nav">
@@ -52,19 +52,12 @@
       </div>
     </nav>
     <br>
- 
-   
-   <!--========== javascript file==========--> 
-    <script type="text/javascript" src="./static/js/jquery-3.3.1.js"></script>
-
-</head>
-<body>
-	<!--pagination example this also has a search funtion-->
+	<!--pagination with search funtion-->
 	<div class = "container-fluid">
     	<div class = "row viewTable-header text-center">
     		<div class = "col sm-12">
     			<p class = "paragraph-header">This page shows Summary Data for all Recipes. Click on a heading to sort Ascending / Desending</p>
-    			<p class = "table-paragraph">Use search to find a recipe, country or allergen. Press backspace in search to clear and return to summary data</p>
+    			<p class = "table-paragraph">Search by keyword to find a recipe. Press backspace in search to clear and return to summary data</p>
     		</div>
     	</div>
             <div class="row table-responsive">
@@ -85,7 +78,7 @@
                                     <tr>
                                         <td> {{recipe.category_name}} </td>
                                         <td> {{recipe.Recipe_name}} </td>
-                                         <td><a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" type="button" class="btn btn-outline-info">View Here</a></td>
+                                        <td><button href="{{url_for('view_recipe', recipe_id=recipe._id)}} " type="button" class="btn btn-outline-info">View Here</button></td>
                                         <td> {{recipe.Country_of_origin}} </td>
                                         <td> {{recipe.Allergens}} </td>
                                         <td> {{recipe.Date_added}} </td>
@@ -102,14 +95,14 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 	
 		<!-- Bootstrap core JavaScript -->
-        <script src="./static/vendor/jquery/jquery.min.js"></script>
-        <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        	<script type="text/javascript" src= "./static/js/datatables.js"></script>
+    <script src="./static/vendor/jquery/jquery.min.js"></script>
+    <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src= "./static/js/datatables.js"></script>
 		<script type="text/javascript">
-		$(document).ready(function() {
-    		$('#recTable').dataTable();
-		});
-    	</script>	
+  		$(document).ready(function() {
+      		$('#recTable').dataTable();
+  		});
+    </script>	
 
 
 </body>

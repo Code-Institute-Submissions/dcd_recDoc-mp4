@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto 100,200,300,400,500,600,700');
 body {
     margin: 0;
+    padding: 0;
 }
 /*set attributes for the online page background image*/
 .responsive-img: {
@@ -22,9 +23,15 @@ h1, h2, h3, h4, h5 {
 p {
     font-size: small;
 }
+/*style first few recipe attributes in returned lists in bold*/
 .bold {
     font-weight: bold;
 }
+/*style to suit smaller screens*/
+nav .brand-logo {
+    font-size: 130%;
+}
+/*additional styles for the materialize button*/
 .btn-small {
     height: 24px;
     width: 50px;
@@ -74,7 +81,7 @@ img {vertical-align: middle;}
     color: white;
     border-radius: 100%;
 }
-/*positoion the chevrons at both edges*/
+/*position the chevrons at both edges*/
 .nextpage {
     right: 0px;
 }
@@ -182,20 +189,15 @@ a:hover {
 #header-nav {
     background-color: #ee6e73;
 }
-/*styles for chart elements*/
-.number_box {
-    font-size: 25px;
-    font-weight: 500;
-    display: inline-block;
-    margin-left: 0;
-}
+/*flask pagination styles*/
 .pagination-page-info {
     padding: .6em;
     padding-left: 0;
     width: 40em;
-    margin: .5em;
-    margin-left: 0;
+    /*margin: .5em;*/
+    /*margin-left: 0;*/
     font-size: 12px;
+    margin: 0;
 }
 .pagination-page-info b {
     color: black;
@@ -204,16 +206,20 @@ a:hover {
     padding: .1em .25em;
     font-size: 150%;
 }
-/* some css styles to form fields */
-#Recipe_name, #Country_of_origin, #Allergens, #Source, #Author, #Added_by, #Editing_notes {
-    text-transform: capitalize;
-    
+/*styles for chart elements*/
+.number_box {
+    font-size: 25px;
+    font-weight: 500;
+    display: inline-block;
+    margin-left: 0;
 }
+/*snippet to rotate x-axis text on allergen graph
 /*davisford github.com/dc-js/dc.js/issues/731*/
 #typebyAllergen .x.axis text {
     text-anchor: end !important;
     transform: rotate(-30deg);
 }
+/*styles for data table page elements*/
 .paragraph-header {
     font-size: 20px;
     color: #26a69a;
@@ -235,6 +241,7 @@ tr {
 button, select {
     font-size: 15px; 
 }
+/*upvote flash messahe styles*/
 .upvoteFlash  {
     color: white;
     font-size: large;
@@ -244,7 +251,7 @@ button, select {
     padding-top: 5px;
 }
 
-
+/*amend slideshow element for smaller screens*/
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}

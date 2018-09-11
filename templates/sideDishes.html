@@ -3,11 +3,13 @@
     <div class="row">
             <div class="col s12 center-align">
                 <div class="site-heading center-align"><h3>List of Side Dishes</h3></div>
-                            <br>
                     <div class ="row">
-                      <div class = "col s6 "> {{ pagination.info }}</div>
-                      <div class ="col s6"><a href="{{url_for('draw_chart')}}" class="waves-effect waves-light btn btn_small green lighten-3">View Dashboard</a></div>
-                    </div>        
+                 <!--flask pagination-->
+                      <div class = "col s12 left-align"> {{ pagination.info }}</div>
+                    </div>
+                    <div class = "row">
+                      <div class ="col s12"><a href="{{url_for('draw_chart')}}" class="waves-effect waves-light btn btn_small green lighten-3">View Dashboard</a></div>
+                    </div>  
                 <form action="{{ url_for('sideDishes') }}" method="POST" class="col s12">
                     {{ pagination.links }}
                           {% for recipe in recipes %}
@@ -44,14 +46,14 @@
                                 <div class="collapsible-header"><i class="material-icons">expand_more</i>Ingredients</div>
                               <div class="collapsible-body"><span>{{recipe.Ingredients}}</span></div>
                               </li>
-                                <div class = "row">
-                                  <div class = "col s6">
-                                     <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Full Recipe</a>
-                                 </div>
-                                 <div class = "col s6">
-                                     <a href="{{url_for('index')}}" class="waves-effect waves-light btn btn_small red lighten-3">Home Page</a>
-                                 </div>
-                                </div>
+                            <div class = "row">
+                              <div class = "col s6">
+                                 <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Full Recipe</a>
+                             </div>
+                             <div class = "col s6">
+                                 <a href="{{url_for('index')}}" class="waves-effect waves-light btn btn_small red lighten-3">Home Page</a>
+                             </div>
+                            </div>
                         </ul> 
                         <hr>
                          {% endfor %} 

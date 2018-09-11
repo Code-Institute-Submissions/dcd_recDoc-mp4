@@ -28,76 +28,75 @@
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
         <div id ="header-nav">
-        <a class="navbar-brand" id = "navbar-brand" href="{{url_for('index')}}">Online Cookbook</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-        </button>
+            <a class="navbar-brand" id = "navbar-brand" href="{{url_for('index')}}">Online Cookbook</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-              <a class="nav-link" href="" id="brand-logo-chart">
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('index')}}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('add_recipe')}}">Add Recipe</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('get_recipes')}}">Edit Recipes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('get_categories')}}">View Categories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('draw_chart')}}">View Dashboard</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link" id = "nav-link" href="{{url_for('table_view')}}">View Data Table</a>
-            </li>
-           
-          </ul>
+                  <a class="nav-link" href="" id="brand-logo-chart">
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('index')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('add_recipe')}}">Add Recipe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('get_recipes')}}">Edit Recipes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('get_categories')}}">View Categories</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('draw_chart')}}">View Dashboard</a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link" id = "nav-link" href="{{url_for('table_view')}}">View Data Table</a>
+                </li>
+           </ul>
         </div>
       </div>
     </nav>
     <hr>
     <br>
    <!--========== Chart Section 1 number boxes ==========-->
+ <section class="section">
    <div class = "container-fluid">
-   <section class="section">
        <div class="row">
-              <div class="col-xs-4 text-center"><h3 class ="text-primary">Total Recipes</h3></div>
-              <div class="col-xs-4 text-center"><h3 class ="text-warning">For Vegetarians</h3></div>
-              <div class="col-xs-4 text-center"><h3 class ="text-success">For Vegans</h3></div>
+          <div class="col-xs-4 text-center"><h3 class ="text-primary">Total Recipes</h3></div>
+          <div class="col-xs-4 text-center"><h3 class ="text-warning">For Vegetarians</h3></div>
+          <div class="col-xs-4 text-center"><h3 class ="text-success">For Vegans</h3></div>
         </div>
         <div class="row">
-              <div class="col-xs-4 text-center number_box text-primary" id="all-recipes"></div>
-              <div class="col-xs-4 text-center number_box text-warning" id="veg-recipes" ></div>
-              <div class="col-xs-4 text-center number_box text-success" id="vegan-recipes" ></div>
+          <div class="col-xs-4 text-center number_box text-primary" id="all-recipes"></div>
+          <div class="col-xs-4 text-center number_box text-warning" id="veg-recipes" ></div>
+          <div class="col-xs-4 text-center number_box text-success" id="vegan-recipes" ></div>
         </div><br>
         <div class="row">
-        <div class="col-xs-12 text-center"><p>The numbers above show Total Recipes on this site and numbers suitable to Vegetarians and Vegans respectively</p><br>
+            <div class="col-xs-12 text-center"><p>The numbers above show Total Recipes on this site and numbers suitable to Vegetarians and Vegans respectively</p><br>
+            </div>
         </div>
-        </div>
-</div>    
-    </section>
+    </div>    
+  <section>
     <hr>
     <!--========== Chart Section 2 Charts==========-->
     <section class="section container-fluid">
         <div class="row">
-              <div class="col-xs-12 col-sm-6 text-center"><h3>Fig.1 Recipe Categories</h3></div>
-              <div class="col-xs-12 col-sm-6 text-center"><h3>Fig. 2 Number of Allergens</h3></div>
+          <div class="col-xs-12 col-sm-6 text-center"><h3>Fig.1 Recipe Categories</h3></div>
+          <div class="col-xs-12 col-sm-6 text-center"><h3>Fig. 2 Number of Allergens</h3></div>
         </div>
         <div class="row">
-              <div class="col-xs-12 col-sm-6 text-center center-block" id="pie-cat"></div>
-              <div class="col-xs-12 col-sm-6 text-center center-block" id="allergens" ></div>
+          <div class="col-xs-12 col-sm-6 text-center center-block" id="pie-cat"></div>
+          <div class="col-xs-12 col-sm-6 text-center center-block" id="allergens" ></div>
         </div>
         <div class="row">
-              <div class="col-xs-12 col-sm-6 text-center "><p>Fig 1 above shows the Number of Recipes by Course Category</p></div>
-              <div class="col-xs-12 col-sm-6 text-center"><p>Fig.2 above shows the Allergens by Number and Type</p></div>
+            <div class="col-xs-12 col-sm-6 text-center "><p>Fig 1 above shows the Number of Recipes by Course Category</p></div>
+            <div class="col-xs-12 col-sm-6 text-center"><p>Fig.2 above shows the Allergens by Number and Type</p></div>
         </div>
     </section>
     <hr>

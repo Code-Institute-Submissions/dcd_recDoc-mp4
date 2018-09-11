@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <head>
-    
+    <!--css for materialize and other custom styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 </head>
 
 <body>
-  <!-- Navigation -->
+  <!-- Navigation menu-->
   
     <header>
         <nav>
@@ -61,8 +63,28 @@
             format: "dddd, dd, mmmm, yyyy",
             closeOnSelect: false // Close upon selecting a date,
         });
-                   
         
+// snippet found at https://stackoverflow.com/questions/48126101/javascript-to-auto-capitalize-first-letter-of-every-word-in-input-fields
+ function toTitleCase(str) {
+  return str.split(/\s+/).map(s => s.charAt(0).toUpperCase() + s.substring(1).toLowerCase()).join(" ");
+}
+    $('input').on('keyup', function(event) {
+      var $t = $(this);
+      $t.val(toTitleCase($t.val()));
+    });   
+    
+//also can be used in textareas //
+
+$('textarea').on('keyup', function(event) {
+  var $t = $(this);
+  $t.val(toTitleCase($t.val()));
+});    
+ 
+//warn before deleting recipes or categories // 
+  function delItems() {
+        confirm();
+    }                  
+// script to trigger the dropdown links //
     jQuery('#group-dropdown').on('change', function(){
         if(jQuery(this).val() == 1){
         window.location.href = "{{ url_for('vegetarian') }}";
@@ -105,7 +127,6 @@
         if(jQuery(this).val() == 400){
         window.location.href = "{{ url_for('recentlyAdded') }}";
         }
-        
     });
     </script>
 </body>

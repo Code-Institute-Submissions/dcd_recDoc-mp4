@@ -169,7 +169,7 @@ def allrecipes():
     page, per_page, offset = get_page_args()
     recipes=mongo.db.recipes.find().sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
-    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
+    pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset) 
     return render_template('allRecipes.html', recipes=recipes_to_render, search=search, pagination=pagination)   
     
 # function to display summary vegetarian recipe list
@@ -185,8 +185,6 @@ def vegetarian():
     recipes=mongo.db.recipes.find({"Suitable_for_Vegetarians": "Yes"},{ "_id": 1, "Recipe_name": 1, "category_name": 1, "upvotes": 1, "Country_of_origin": 1, "Date_added": 1, "Allergens": 1, "Total_time": 1, "Ingredients": 1 } ).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
-    # for recipe in recipes:
-    #     count = recipes.count()
     return render_template('vege.html', recipes=recipes_to_render, search=search, pagination=pagination)
         
 # function to display summary vegan recipe list
@@ -202,8 +200,6 @@ def vegan():
     recipes=mongo.db.recipes.find({"Suitable_for_Vegans": "Yes" } ).sort('Recipe_name', pymongo.ASCENDING)
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
-    # for recipe in recipes:
-    #     count = recipes.count()
     return render_template('vegan.html', recipes=recipes_to_render, search=search, pagination=pagination)
         
 # function to display summary other recipe list
@@ -294,7 +290,9 @@ def breadsCakes():
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('breadsCakes.html', recipes=recipes_to_render, search=search, pagination=pagination) 
+    
 """ FILTER BY CRITERIA """
+
 # get the top 5 by upvote
 @app.route('/topfive', methods=["GET", "POST"])
 def topfive():
@@ -347,18 +345,18 @@ def recentlyAdded():
     return render_template('recentlyAdded.html', recipes=recipes_to_render, search=search, pagination=pagination)
 
     
-#retrieve attributes from the db to be used in chart construction
+# retrieve attributes from the db to be used in chart construction
 @app.route("/recipe_book/recipes")
 def recipe_book():
     recipes=mongo.db.recipes.find({}, { "category_name": 1, "Total_time": 1, "Date_added": 1, "Allergens": 1, "Suitable_for_Vegans": 1, "Suitable_for_Vegetarians": 1, "Recipe_name": 1, "Country_of_origin": 1, "_id": 0 })
-#output as a string list  for use in dc js charting
+# return as a string list 
     json_recipes = []
     for attribute in recipes:
         json_recipes.append(attribute)
     json_recipes = json.dumps(json_recipes, default=json_util.default)
     return json_recipes
 
-#show the chart   
+# show the chart   
 @app.route("/draw_chart")
 def draw_chart():
     return render_template("chart.html")    

@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-    
 </head>
 <body>
   <header>
@@ -32,7 +31,7 @@
         <div class="col s9">
             <form method="POST" class = "form-group text-center">
                 <label for="username">Enter Username:</label>
-                 <input type="text" required = "required" autocomplete="off" id="username" name="username" class ="validate" placeholder="Enter name (username) 6 or more characters" pattern = ".{5,}[^£/$%^\*~,]+" title= "Minimum of 6 characters required. (Can use (@ and hyphen-) but not other special symbols (like £,$, %))">
+                 <input type="text" required = "required" autocomplete="off" id="username" name="username" class ="validate" placeholder="Enter name (username) 6 or more characters" pattern = ".{5,}[a-zA-Z0-9@- ]" title= "Minimum of 6 characters required. (Can use (@ and hyphen but no other special characters)">
         </div>
                 <div class = "col s3">
                         <br>
@@ -41,5 +40,18 @@
     
             </form>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+//code based on snippet found on https://stackoverflow.com/questions/21331576/restrict-special-characters-using-jquery
+jQuery(document).ready(function() {
+  jQuery("#username").keyup(function(event) {
+    name=jQuery("#username").val();
+    name=name.replace(/[^a-zA-Z 0-9.@-]+/g, '');
+    jQuery("#username").val(name);
+  }
+  );
+}
+);
+</script>
 </body>
 </html>

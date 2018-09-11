@@ -3,11 +3,13 @@
     <div class="row">
             <div class="col s12 center-align">
                 <div class="site-heading center-align"><h3>List of Dessert Recipes</h3></div>
-                            <br>
-                    <div class ="row">
-                      <div class = "col s6 "> {{ pagination.info }}</div>
-                      <div class ="col s6"><a href="{{url_for('draw_chart')}}" class="waves-effect waves-light btn btn_small green lighten-3">View Dashboard</a></div>
-                    </div>        
+                   <div class ="row">
+                 <!--flask pagination-->
+                      <div class = "col s12 left-align"> {{ pagination.info }}</div>
+                    </div>
+                    <div class = "row">
+                      <div class ="col s12"><a href="{{url_for('draw_chart')}}" class="waves-effect waves-light btn btn_small green lighten-3">View Dashboard</a></div>
+                    </div>       
                 <form action="{{ url_for('desserts') }}" method="POST" class="col s12">
                     {{ pagination.links }}
                           {% for recipe in recipes %}
