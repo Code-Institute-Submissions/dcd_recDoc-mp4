@@ -76,3 +76,26 @@ Flask pagination (as per the flask documentation) is used for all search return 
 than 10 documents in the browser window. In general documents are sorted ascending by recipe name for 
 convenience except where specifically filtered under a criterion (example number of upvotes or quick 
 recipes, etc).
+A separate script file has been written for the chart elements but the other script (30 odd lines in total) 
+has been kept within the html documents. The base html contains a script section with jQuery scripts to 
+initialise the various elements of materialize, to enforce text formats within the html forms and to trigger 
+the drop down search links in the home page. The index page contains some jQuery script to drive the 
+slideshow. The edit page contains some jQuery (due to a bug) to bind the date associated with the task to 
+the field. Thus script is required in the parent and child. The view_table template contains a few lines of 
+jQuery for the datatable (bootstrap library).
+The additional-info folder contains some additional files deatailing background information relating to the 
+project.
+Sources:
+Code Institute Module 8 Data Driven Development Module
+https://stackoverflow.com/questions/21331576/restrict-special-characters-using-jquery
+https://stackoverflow.com/questions/48126101/javascript-to-auto-capitalize-first-letter-of-every-word-in-input-fields
+http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/
+https://github.com/dc-js/dc.js/issues/731 (rotate x-axis text)
+https://www.w3schools.com/howto/howto_js_slideshow.asp
+Images:
+https://www.pexels.com/photo/food-on-white-background-256318/
+https://burst.shopify.com/photos/breakfast-from-above
+Recipes:
+https://www.nhlbi.nih.gov/health-topics/publications-and-resources
+http://www.eat-vegan.rocks
+https://damndelicious.net/2014/10/13/easy-homemade-ramen/

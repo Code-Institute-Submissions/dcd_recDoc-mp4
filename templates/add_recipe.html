@@ -39,7 +39,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Prep_time" name = "Prep_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Prep_time" name = "Prep_time" type="number" value="0" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Prep Time (in minutes)</label>
             </div>
         </div>
@@ -48,7 +48,7 @@
          <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Cooking_time" name = "Cooking_time" type="number" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Cooking_time" name = "Cooking_time" type="number" value="0" class="validate" autocomplete="off"  placeholder="Enter as a number (for example 20)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Cooking Time (in minutes)</label>
             </div>
         </div>
@@ -80,7 +80,7 @@
         <div class = "row">
             <div class="input-field col s12">
               <i class="material-icons prefix">list</i>
-              <textarea type="textarea" name = "Instructions" id = "Instructions" required class = "materialize-textarea" autocomplete="off"  placeholder="Enter as a list (for example 'Heat the oil in a pan', 'Cook meat for 5 mins', etc"></textarea>
+              <textarea type="textarea" name = "Instructions" id = "Instructions" required class = "materialize-textarea" autocomplete="off"  placeholder="Enter as a list (for example '1 Heat the oil in a pan', '2 Cook meat for 5 mins', etc"></textarea>
               <label for="icon_prefix">List of Instructions</label>
             </div>
         </div>
@@ -88,7 +88,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Servings" name = "Servings" type="number" class="validate" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Servings" name = "Servings" type="number" value="0" class="validate" autocomplete="off"  placeholder="Total servings obtained from all ingredients (for example 4)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Total Servings</label>
             </div>
         </div>
@@ -97,7 +97,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Calories_per_serving" name = "Calories_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 80)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Calories_per_serving" name = "Calories_per_serving" value="0" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 80)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Calories per Serving (kCal)</label>
             </div>
         </div>
@@ -106,7 +106,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Protein_per_serving" name = "Protein_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Protein_per_serving" name = "Protein_per_serving" value="0" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Protein (in grams) per serving</label>
             </div>
         </div>
@@ -115,7 +115,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">pie_chart</i>
-              <input id="Carbohydrate_per_serving" name = "Carbohydrate_per_serving" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
+              <input id="Carbohydrate_per_serving" name = "Carbohydrate_per_serving" value="0" type="number" class="validate" autocomplete="off"  placeholder="Value per 1 serving (for example 10)" pattern="[0-9]" Title = "Enter a Number">
               <label for="icon_prefix">Carbohydrate (in grams) per Serving</label>
             </div>
         </div>
@@ -124,7 +124,7 @@
           <div class="input-field col s12">
               <i class="material-icons prefix">comment</i>
                   <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  required placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)"></textarea>
-                  <label for="icon_prefix">Allergens (Write None Known if there are none)</label>
+                  <label for="icon_prefix">Allergens (Write None Known if there are none. Where there are write aplhabetically in Title Case: for example; Contains Egg, Gluten, Lupin)</label>
           </div>
         </div>        
 <!--code to allow the user to add the source of the recipe-->

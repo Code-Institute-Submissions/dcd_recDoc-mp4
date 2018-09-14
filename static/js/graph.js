@@ -39,7 +39,7 @@ function total_vege_recipes(ndx) {
       .valueAccessor(function(d){return d; })
       .group(ndx.groupAll().reduceSum(function(d) {
           count = 0
-          if (d.Suitable_for_Vegetarians ==="Yes" || d.Suitable_for_Vegetarians === "yes") {
+          if (d.Suitable_for_Vegetarians ==="Yes") {
               count++
               return count
           } else {
@@ -55,7 +55,7 @@ function total_vegan_recipes(ndx) {
       .valueAccessor(function(d){return d; })
       .group(ndx.groupAll().reduceSum(function(d) {
           count = 0
-          if (d.Suitable_for_Vegans ==="Yes" || d.Suitable_for_Vegans === "yes") {
+          if (d.Suitable_for_Vegans ==="Yes") {
               count++
               return count
           } else {
@@ -117,7 +117,7 @@ function type_by_category(ndx) {
             function totVeg(Suitable_for_Vegetarians) {
                 return function (d) {
                     countV = 0
-                   if (d.Suitable_for_Vegetarians === "yes" || d.Suitable_for_Vegetarians === "Yes") {
+                   if (d.Suitable_for_Vegetarians === "Yes") {
                      countV++;
                      return countV
                  } else {
@@ -129,7 +129,7 @@ function type_by_category(ndx) {
             function totVegan(Suitable_for_Vegans) {
                 return function (d) {
                     countv = 0
-                   if (d.Suitable_for_Vegans === "yes" || d.Suitable_for_Vegans === "Yes") {
+                   if (d.Suitable_for_Vegans === "Yes") {
                      countv++;
                      return countv
                  } else {
@@ -141,7 +141,7 @@ function type_by_category(ndx) {
              function totMeat(Suitable_for_Vegetarians) {
                 return function (d) {
                     countT = 0
-                   if (d.Suitable_for_Vegetarians === "no" || d.Suitable_for_Vegetarians === "No") {
+                   if (d.Suitable_for_Vegetarians === "No") {
                      countT++;
                      return countT
                  } else {
@@ -174,7 +174,7 @@ function type_by_allergen(ndx) {
             function totVeg(Suitable_for_Vegetarians) {
                 return function (d) {
                     countV = 0
-                   if (d.Suitable_for_Vegetarians === "yes" || d.Suitable_for_Vegetarians === "Yes") {
+                   if (d.Suitable_for_Vegetarians === "Yes") {
                      countV++;
                      return countV
                  } else {
@@ -185,7 +185,7 @@ function type_by_allergen(ndx) {
             function totVegan(Suitable_for_Vegans) {
                 return function (d) {
                     countv = 0
-                   if (d.Suitable_for_Vegans === "yes" || d.Suitable_for_Vegans === "Yes") {
+                   if (d.Suitable_for_Vegans === "Yes") {
                      countv++;
                      return countv
                  } else {
@@ -196,7 +196,7 @@ function type_by_allergen(ndx) {
              function totMeat(Suitable_for_Vegetarians) {
                 return function (d) {
                     countT = 0
-                   if (d.Suitable_for_Vegetarians === "no" || d.Suitable_for_Vegetarians === "No") {
+                   if (d.Suitable_for_Vegetarians === "No") {
                      countT++;
                      return countT
                  } else {

@@ -33,7 +33,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">access_time</i>
-              <input id="Total_time" name = "Total_time" type="number" class="validate" required autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number" value="{{recipe.Total_time}}">>
+              <input id="Total_time" name = "Total_time" type="number" class="validate" required autocomplete="off"  placeholder="Enter as mins (for example 40)" pattern="[0-9}" Title = "Enter a Number" value="{{recipe.Total_time}}">
               <label for="icon_prefix">Total Prep and Cook Time (in minutes)</label>
             </div>
         </div>
@@ -125,7 +125,7 @@
   <div class="input-field col s12">
       <i class="material-icons prefix">comment</i>
           <textarea type="textarea" name = "Allergens" id = "Allergens" class = "materialize-textarea" autocomplete="off"  required placeholder= "For example write as: Contains Nuts (Recipe may contain any of the following:  Gluten (wheat, rye, barley, oats), Crustaceans (crab, shrimp, prawn), Fish, Eggs, Nuts (peanuts, almonds, hazelnuts, walnuts, cashews, pecan nuts, Brazil nuts, pistachio nuts, macadamia), Soy (soya), Seasme Seeds, Milk, Celery, Mustard, Sulphur dioxide and sulphites, Lupin (lupin beans, lupin based flours and pastas) and Molluscs (mussel, snail, octupus, oyster, clam, whelk, squid)">{{recipe.Allergens}}</textarea>
-          <label for="icon_prefix">Allergens (Write None Known if there are none)</label>
+          <label for="icon_prefix">Allergens (Write None Known if there are none. Where there are write aplhabetically in Title Case: for example; Contains Egg, Gluten, Lupin)</label>
   </div>
 </div>             
 <!--code to allow the user to edit the source of the recipe-->

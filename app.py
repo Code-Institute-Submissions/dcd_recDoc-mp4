@@ -339,7 +339,7 @@ def recentlyAdded():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     # get_page_arg defaults to page 1, per_page of 10
     page, per_page, offset = get_page_args()
-    recipes=mongo.db.recipes.find({"Date_added": {"$gte": 'Tuesday, 21, August, 2018'}}).sort('Date_added', pymongo.DESCENDING)
+    recipes=mongo.db.recipes.find({"upvotes": {"$gte": 0}}).sort([('_id', pymongo.DESCENDING), ('upvotes', pymongo.DESCENDING)])
     recipes_to_render = recipes.limit(per_page).skip(offset)
     pagination = Pagination(page=page, total=recipes.count(), per_page=per_page, offset=offset)
     return render_template('recentlyAdded.html', recipes=recipes_to_render, search=search, pagination=pagination)
@@ -349,7 +349,8 @@ def recentlyAdded():
 @app.route("/recipe_book/recipes")
 def recipe_book():
     recipes=mongo.db.recipes.find({}, { "category_name": 1, "Total_time": 1, "Date_added": 1, "Allergens": 1, "Suitable_for_Vegans": 1, "Suitable_for_Vegetarians": 1, "Recipe_name": 1, "Country_of_origin": 1, "_id": 0 })
-# return as a string list 
+#idea sourced at http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/
+#return as a string list
     json_recipes = []
     for attribute in recipes:
         json_recipes.append(attribute)
