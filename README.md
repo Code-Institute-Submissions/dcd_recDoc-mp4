@@ -76,6 +76,15 @@ Flask pagination (as per the flask documentation) is used for all search return 
 than 10 documents in the browser window. In general documents are sorted ascending by recipe name for 
 convenience except where specifically filtered under a criterion (example number of upvotes or quick 
 recipes, etc).
+Semantic elements are used within the html documents (<section>, <img>, <form>,  <input> , <textarea>, etc).  
+The coding pages also contain comments providing information on the various sections and functions.
+The materialize classes center-align, responsive-img, input-field, collapsible and btn btn_small 
+(in conjunction with jQuery where necessary) are used extensively to add styling and provide functionality. 
+The material-icons class is used to provide visual intuitiveness in the forms.
+Where bootstrap is used classes such as text-center, text-primary, table-responsive, table-striped are used 
+to add styling and provide functionality. A separate style sheet provides styling for custom elements and 
+to override bootstrap styles where the materialize theme is continued throughout all pages in relation to 
+the nav-bar and buttons.
 A separate script file has been written for the chart elements but the other script (30 odd lines in total) 
 has been kept within the html documents. The base html contains a script section with jQuery scripts to 
 initialise the various elements of materialize, to enforce text formats within the html forms and to trigger 
