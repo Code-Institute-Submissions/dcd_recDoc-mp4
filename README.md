@@ -34,12 +34,12 @@ User stories include:
 * As a disciplined foodie  who lives in(Country), I want to access recipe groups such as vegan recipes from my Country/other countries.
 * As a busy mom I want the ability to source quick recipes from my country/othercountries
 * As an allergen sufferer I want the ability to find allergen free recipes from around the world
-* As an intrepid traveller visiting (country) I want to leaern about indigeneous cuisines
+* As an intrepid traveller visiting (country) I want to learn about indigeneous cuisines
 
 ### Wireframing ###
-Pencil was used to draw up wireframes of how the different pages of the application might appear to satisfy 
-the brief. They can be viewed in the milestone4Pencil.pdf file in the additional_info folder in the static
-dir.
+Pencil was used to draw up wireframes of how the different pages of the application might appear, to satisfy 
+the requirements of the brief. They can be viewed in the milestone4Pencil.pdf file in the additional_info 
+folder in the static dir.
 
 ### Design ###
 #### Database management system: ####
@@ -73,7 +73,7 @@ method used in conjunction with matplotlib.  While not responsive on smaller scr
 effective way to display interactive information visually on larger screen sizes. The level of interactivity
 on a dc crossfilter chart is always a strong consideration despite the loss of responsiveness on smaller
 screens. The data can be viewed on smaller screen sizes by scrolling.  
-Semantic elements are used within the html documents (<section>, <img>, <form>,  <input> , <textarea>, etc).  
+Semantic elements are used within the html documents (section, img, form, input, textarea, etc).  
 The coding pages also contain comments providing information on the various sections and functions.
 The materialize classes center-align, responsive-img, input-field, collapsible and btn btn_small 
 (in conjunction with jQuery where necessary) are used extensively to add styling and provide functionality.   
@@ -86,7 +86,7 @@ the nav-bar and buttons.
 ## Features ##
 The features are described below.
 ### Existing Features ###
-*Feature 1* Initial signin page to ensure only those interested enter the site. Initial access to the web 
+*Feature 1* Initial sign-in page to ensure only those interested enter the site. Initial access to the web 
 application is via a sign in page which directs you to the home page on successful sign in. There is some 
 front end validation in that some special characters are not allowed. This is the only way to access the 
 application. Materialize is added to the page to give a color theme to the submit button but this is not 
@@ -175,15 +175,22 @@ jQuery for the datatable (bootstrap library).
 
 ## Testing ##
 Testing was mainly done by writing code and producing output and analysing issues found. The approach.pdf 
-located in the additional_info folder, outlines the methodology used and issues encountered.
-
+located in the additional_info folder, outlines the methodology used to derive routes and views and issues 
+encountered. Some testing of mongodb methods was done in the cloud9 ide to see what output was produced. They
+are outlined in the methodsTest.py.pdf file in the additional_info folder. The developer tool was used to 
+pinpoint styles in bootstrap to be changed to the materialize format.  
+A lot of work was focused on ensuring that data in the forms is validated in such a way as to be consistent 
+across all users. For example dates will alway be the same format, integers will always be integers, country 
+of origin will always begin with a capital, suitable for vegans will always be either "Yes" or "No" and so on.
+Consistent input of data is essential, particularly when data is being computed for output in the dashboard.  
+The app was run on chrome, firefox and microsoft edge and performed similarly across all 3 apps.  
 The additional-info folder contains some additional files detailing background information relating to the 
-project. Links also shown in acknowledgements below.
-*approach.pdf* Outlines the approach used with the python end and issues encountered.  
+project. Links also shown in acknowledgements below.  
+*approach.pdf* Outlines the approach used with the python end and issues encountered.    
 *methodsTest.pdf* This file outlines some tests run in the ide to view output from the methods illustrated
-within the mongodb and pymongo documentation.  
+within the mongodb and pymongo documentation.    
 *additional-infoMP4.pdf* Lists other code sources consulted in completing this application. Also lists information 
-sources and any references to licenses.
+sources and any references to licenses.  
 ## Deployment ##
 The repository for this site is located at https://github.com/vmcggh18/dcd_recDoc-mp4  
 The repo can be downloaded as a zip file for installation into a local ide. When installed locally, check 
