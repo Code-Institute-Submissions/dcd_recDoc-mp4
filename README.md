@@ -116,7 +116,7 @@ asking if recipe should be deleted. Click ok or cancel as appropriate.
 category. (This functionality is a clone of the CRUD functionality provided for the recipes).  
 *Feature 7* Full view recipe format. The full view page allows a user to view the complete recipe with all 
 fields. The page presents the field name with dropdown, which can then be clicked to reveal the info. There 
-is a button for upvoting and a button to return to the home page. Upvoting can only occur in full page view.
+is a button for upvoting and a button to return to the home page. Upvoting can only occur in full page view.  
 *Feature 8* Upvote functionality. The upvote field is presented as a read only field and set to 0 for the first 
 edition of a recipe. This field is incorporated into the form, as the other fields and gets incremented on 
 upvote using the $inc operator. There is no user interaction while adding or editing the upvote field.  Once 
@@ -213,13 +213,23 @@ The sources below provided inspiration for this application:
 #### Code Institute ####
 Code Institute Module 8 Data Driven Development Module 
 #### Other Documentation Consulted ####
-[Mongodb documentation:](https://docs.mongodb.com/)  
+[Mongodb documentation:](https://docs.mongodb.com/)    
+Overview of mongodb methods  
 [pymongo docs:](https://api.mongodb.com/python/current/)  
-[flask:](http://flask.pocoo.org/)  
-[flask pagination:](http://flask.pocoo.org/snippets/44/)  
+Overview of pymongo methods  
+[flask:](http://flask.pocoo.org/)    
+Overview of flask  
+[flask pagination:](http://flask.pocoo.org/snippets/44/)    
+Syntax for using flask pagination  
 [Restrict special characters with jQuery](https://stackoverflow.com/questions/21331576/restrict-special-characters-using-jquery)  
-[Auto-capitalize-first-letter-of-every-word-in-input-fields](https://stackoverflow.com/questions/48126101/javascript-to-auto-capitalize-first-letter-of-every-word-in-input-fields)  
-[Interactive Data Visualisation with mongodb and d3-dc charting](http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/) 
-[Rotate x-axis chart text](https://github.com/dc-js/dc.js/issues/731 (rotate x-axis text))  
+Using jQuery to restrict characters allowed  
+[Auto-capitalize-first-letter-of-every-word-in-input-fields](https://stackoverflow.com/questions/48126101/javascript-to-auto-capitalize-first-letter-of-every-word-in-input-fields)    
+Using javascript to capitalise the first letter of each word in a form. Used in this application to customise
+text across all users.  
+[Interactive Data Visualisation with mongodb and d3-dc charting](http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/)  
+Tutorial example on integrating d3-dc charting with mongodb  
+[Rotate x-axis chart text](https://github.com/dc-js/dc.js/issues/731 (rotate x-axis text)    
+Rotating x-axis text on a dc chart to fit within its allocated width.  
 [Slideshow](https://www.w3schools.com/howto/howto_js_slideshow.asp)  
+Tutorial on how to incorporate a slideshow into a html document  
 
