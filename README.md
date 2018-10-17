@@ -1,4 +1,3 @@
-
 # dcd_recipes
 
 This data-driven web application  allows a user to access a recipe database to Create, Read, Update and 
@@ -43,7 +42,7 @@ folder in the static dir.
 
 ### Design ###
 #### Database management system: ####
-Mongodb was chosen as the database management system for this application. It was felt that a recipe based 
+Mongodb (mLab) was chosen as the database management system for this application. It was felt that a recipe based 
 application would not necessarily handle a lot of complicated querying, but would be prone to an unstructured
 format as different users inteact with the application. Mongodb uses the json structure format (bson) which 
 is useful for storing large amounts of unstructured data. JSON  format lets you nest records one within the 
@@ -154,6 +153,10 @@ this application as a standard and robust belt and braces exercise.
 - There is also potential to add other charts depending on user preferences.
 
 ## Technologies used ##
+- [Mongodb hosting](https://mlab.com/)
+    - mLab cloud service database used to host data.
+- [Flask](flask.pocoo.org/)
+    - Flask pymongo framework used to render data and provide functionality, Flask pagination also used.
 - [Materialize](https://materializecss.com/):     
     - All html templates dealing with the recipes and categories are rendered in the materialize standard version 
 front-end  development framework. It is simple to use, is supported across devices, is responsive and 
