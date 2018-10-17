@@ -248,7 +248,10 @@ button, select {
     padding-bottom: 5px;
     padding-top: 5px;
 }
-
+.end-line {
+    background-color: pink;
+    padding: 10px 0px 10px 0px;
+}
 /*amend slideshow element for smaller screens*/
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
